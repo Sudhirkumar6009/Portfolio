@@ -87,7 +87,7 @@ export function HeroSection() {
                     : "text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 via-blue-600 to-cyan-600"
                 }`}
               >
-                Your Name
+                Sudhirkumar Kuchara
               </span>
             </h1>
 

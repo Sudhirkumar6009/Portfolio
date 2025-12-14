@@ -78,7 +78,7 @@ export function Header() {
                 e.preventDefault();
                 scrollToSection("#home");
               }}
-              className="flex items-center gap-2 group hover:scale-105 transition-transform duration-200"
+              className="flex items-center gap-1 group hover:scale-105 transition-transform duration-200"
             >
               <div
                 className={`w-10 h-10 m-2 rounded-xl flex items-center justify-center ${

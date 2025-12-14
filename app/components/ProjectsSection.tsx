@@ -1,75 +1,81 @@
 "use client";
 
 import { useTheme } from "../context/ThemeContext";
-import { ExternalLink, Github, Folder, Star } from "lucide-react";
-
-const projects = [
-  {
-    title: "E-Commerce Platform",
-    description:
-      "A full-stack e-commerce solution with real-time inventory and payment processing.",
-    tags: ["Next.js", "TypeScript", "Stripe", "PostgreSQL"],
-    image: "🛒",
-    github: "#",
-    demo: "#",
-    featured: true,
-  },
-  {
-    title: "AI Chat Application",
-    description:
-      "Real-time chat application powered by AI with natural language processing.",
-    tags: ["React", "Node.js", "OpenAI", "Socket.io"],
-    image: "🤖",
-    github: "#",
-    demo: "#",
-    featured: true,
-  },
-  {
-    title: "Task Management System",
-    description:
-      "Collaborative project management tool with drag-and-drop and analytics.",
-    tags: ["Vue.js", "Firebase", "Tailwind"],
-    image: "📋",
-    github: "#",
-    demo: "#",
-    featured: false,
-  },
-  {
-    title: "Fitness Tracking App",
-    description:
-      "Mobile-first fitness app with workout tracking and progress charts.",
-    tags: ["React Native", "Redux", "MongoDB"],
-    image: "💪",
-    github: "#",
-    demo: "#",
-    featured: false,
-  },
-  {
-    title: "Portfolio Generator",
-    description:
-      "Dynamic portfolio builder with customizable themes and live preview.",
-    tags: ["Next.js", "Prisma", "Tailwind"],
-    image: "🎨",
-    github: "#",
-    demo: "#",
-    featured: true,
-  },
-  {
-    title: "Weather Dashboard",
-    description:
-      "Beautiful weather app with location-based forecasts and maps.",
-    tags: ["React", "OpenWeather API", "Mapbox"],
-    image: "🌤️",
-    github: "#",
-    demo: "#",
-    featured: false,
-  },
-];
+import { ExternalLink, Github, Star, ArrowUpRight } from "lucide-react";
 
 export function ProjectsSection() {
   const { theme } = useTheme();
   const isDark = theme === "dark";
-
+  const projects = [
+    {
+      title: "StorageX",
+      description:
+        "StorageX is a decentralized file storage platform that combines IPFS technology with blockchain-based authentication to deliver secure, censorship-resistant data storage",
+      tags: ["TypeScript", "Web3Auth", "IPFS", "MetaMask", "Node.js"],
+      image: `${
+        isDark ? "/assets/storagex_dark.png" : "/assets/storagex_light.png"
+      }`,
+      github: "https://github.com/Sudhirkumar6009/StorageX",
+      demo: "https://storage-x-47xm.vercel.app/",
+      details:
+        "https://github.com/Sudhirkumar6009/StorageX/blob/main/README.md",
+      featured: true,
+    },
+    {
+      title: "LibraXpert",
+      description:
+        "LibraXpert is an advanced Cross-platform Library Management System designed for educational institutions, public libraries, and private collections",
+      tags: ["React", "Node.js", "MongoDB", "Express", "Tailwind"],
+      image: "/assets/libraXpert.png",
+      github: "https://github.com/Sudhirkumar6009/LibraXpert",
+      demo: "https://libraxpert.vercel.app/",
+      details:
+        "https://github.com/Sudhirkumar6009/StorageX/blob/main/README.md",
+      featured: true,
+    },
+    {
+      title: "StackIt Q/A Forum",
+      description:
+        "Odoo'25 Virtual round project — StackIt is a minimal Q/A forum platform built with modern web technologies, designed for clean, community-driven question-and-answer interactions.",
+      tags: ["Express.js", "React", "Tailwind", "MongoDB"],
+      image: "/assets/stackIt.png",
+      github: "https://github.com/Sudhirkumar6009/StackIt_Odoo",
+      demo: "https://libraxpert.vercel.app/",
+      details:
+        "https://github.com/Sudhirkumar6009/StackIt_Odoo/blob/main/README.md",
+      featured: true,
+    },
+    {
+      title: "Fitness Tracking App",
+      description:
+        "Mobile-first fitness app with workout tracking and progress charts.",
+      tags: ["React Native", "Redux", "MongoDB"],
+      image: "/projects/fitness-app.png",
+      github: "#",
+      demo: "#",
+      featured: false,
+    },
+    {
+      title: "Portfolio Generator",
+      description:
+        "Dynamic portfolio builder with customizable themes and live preview.",
+      tags: ["Next.js", "Prisma", "Tailwind"],
+      image: "/projects/portfolio-gen.png",
+      github: "#",
+      demo: "#",
+      featured: true,
+    },
+    {
+      title: "Weather Dashboard",
+      description:
+        "Beautiful weather app with location-based forecasts and maps.",
+      tags: ["React", "OpenWeather API", "Mapbox"],
+      image: "/projects/weather-app.png",
+      github: "#",
+      demo: "#",
+      featured: false,
+    },
+  ];
   return (
     <section
       id="projects"
@@ -123,117 +129,183 @@ export function ProjectsSection() {
           </p>
         </div>
 
-        {/* Projects Grid - Using CSS transitions instead of Framer Motion */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Projects Grid - 2 rows x 3 columns */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, i) => (
             <div
               key={i}
-              className={`group relative p-6 rounded-2xl border transition-all duration-300 hover:-translate-y-2 will-change-transform ${
+              className={`group relative border border-cyan-200 rounded-3xl overflow-hidden transition-all duration-500 hover:scale-[1.02] ${
                 isDark
-                  ? "bg-slate-900/50 border-slate-800 hover:border-cyan-500/50 hover:shadow-xl hover:shadow-cyan-500/5"
-                  : "bg-white border-gray-200 hover:border-cyan-500/50 hover:shadow-xl hover:shadow-cyan-500/5"
+                  ? "bg-slate-900/80 shadow-2xl shadow-black/20"
+                  : "bg-white shadow-xl shadow-gray-200/50"
               }`}
               style={{ animationDelay: `${i * 100}ms` }}
             >
-              {/* Featured Badge */}
-              {project.featured && (
-                <div className="absolute -top-3 -right-3 px-3 py-1 rounded-full text-xs font-medium flex items-center gap-1 bg-gradient-to-r from-cyan-500 to-blue-500 text-white">
-                  <Star className="w-3 h-3" />
-                  Featured
-                </div>
-              )}
+              {/* Image/Preview Area */}
+              <div className="relative h-48 overflow-hidden">
+                {/* Fallback Background */}
+                <div
+                  className={`absolute inset-0 ${
+                    isDark
+                      ? "bg-white sm:bg-slate-800"
+                      : "bg-white sm:bg-gray-200"
+                  }`}
+                />
 
-              {/* Project Icon */}
-              <div
-                className={`w-14 h-14 rounded-xl mb-5 flex items-center justify-center text-2xl transition-transform duration-300 group-hover:scale-110 ${
-                  isDark
-                    ? "bg-gradient-to-br from-cyan-500/20 to-blue-500/20 border border-cyan-500/20"
-                    : "bg-gradient-to-br from-cyan-50 to-blue-50 border border-cyan-200"
-                }`}
-              >
-                {project.image}
-              </div>
+                {/* Project Image as Background */}
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="absolute inset-2 sm:inset-0 w-[calc(100%-1rem)] sm:w-full h-[calc(100%-1rem)] sm:h-full object-cover transition-all duration-900 group-hover:scale-110 rounded-xl sm:rounded-none"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).style.display = "none";
+                  }}
+                />
 
-              {/* Content */}
-              <h3
-                className={`text-lg font-bold mb-2 transition-colors duration-300 group-hover:text-cyan-500 ${
-                  isDark ? "text-white" : "text-gray-900"
-                }`}
-              >
-                {project.title}
-              </h3>
-              <p
-                className={`mb-4 text-sm leading-relaxed ${
-                  isDark ? "text-gray-400" : "text-gray-600"
-                }`}
-              >
-                {project.description}
-              </p>
+                {/* Featured Badge */}
+                {project.featured && (
+                  <div className="absolute top-2 left-2 px-1.5 py-1.5 rounded-full text-xs font-semibold flex items-center backdrop-blur-md border border-white/10">
+                    <Star className="w-3 h-3 fill-yellow-400 stroke-yellow-400" />
+                  </div>
+                )}
 
-              {/* Tags */}
-              <div className="flex flex-wrap gap-2 mb-5">
-                {project.tags.map((tag, j) => (
-                  <span
-                    key={j}
-                    className={`px-2 py-1 rounded-md text-xs font-medium ${
-                      isDark
-                        ? "bg-slate-800 text-cyan-300"
-                        : "bg-cyan-50 text-cyan-700"
+                {/* Hover Overlay with View Button - Slides up from bottom */}
+                <div className="absolute inset-y-0 end-2 h-full elevation-20 translate-y-full group-hover:translate-y-0 transition-all duration-500 ease-out flex items-end justify-center pb-2">
+                  <a
+                    href={project.demo}
+                    className={`px-4 py-3 bg-cyan-500 rounded-full font-semibold flex items-center gap-2 transition-all duration-300 hover:bg-cyan-600 hover:scale-105 shadow-lg ${
+                      isDark ? "text-black" : "text-white"
                     }`}
+                    target="_blank"
                   >
-                    {tag}
-                  </span>
-                ))}
+                    Live
+                    <ArrowUpRight className="w-4 h-4" />
+                  </a>
+                </div>
               </div>
 
-              {/* Links */}
-              <div className="flex items-center gap-3">
-                <a
-                  href={project.github}
-                  className={`p-2 rounded-lg transition-colors duration-200 hover:scale-105 ${
+              {/* Content Area */}
+              <div className="p-6">
+                {/* Title */}
+                <h3
+                  className={`text-xl font-bold mb-2 transition-colors duration-300 ${
                     isDark
-                      ? "bg-slate-800 text-gray-300 hover:text-cyan-400"
-                      : "bg-gray-100 text-gray-600 hover:text-cyan-600"
+                      ? "text-white group-hover:text-cyan-400"
+                      : "text-gray-900 group-hover:text-cyan-600"
                   }`}
                 >
-                  <Github className="w-4 h-4" />
-                </a>
-                <a
-                  href={project.demo}
-                  className={`p-2 rounded-lg transition-colors duration-200 hover:scale-105 ${
-                    isDark
-                      ? "bg-slate-800 text-gray-300 hover:text-cyan-400"
-                      : "bg-gray-100 text-gray-600 hover:text-cyan-600"
+                  {project.title}
+                </h3>
+
+                {/* Description */}
+                <p
+                  className={`mb-4 text-sm leading-relaxed line-clamp-2 ${
+                    isDark ? "text-gray-400" : "text-gray-600"
                   }`}
                 >
-                  <ExternalLink className="w-4 h-4" />
-                </a>
-                <a
-                  href={project.demo}
-                  className={`ml-auto text-sm font-medium flex items-center gap-1 transition-colors duration-200 ${
-                    isDark
-                      ? "text-cyan-400 hover:text-cyan-300"
-                      : "text-cyan-600 hover:text-cyan-700"
+                  {project.description}
+                </p>
+
+                {/* Tags */}
+                <div className="flex flex-wrap gap-2 mb-5">
+                  {project.tags.slice(0, 3).map((tag, j) => (
+                    <span
+                      key={j}
+                      className={`px-3 py-1 rounded-full text-xs font-medium transition-all duration-300 hover:scale-105 ${
+                        isDark
+                          ? "bg-slate-800 text-gray-300 hover:bg-slate-700"
+                          : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                      }`}
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                  {project.tags.length > 3 && (
+                    <span
+                      className={`px-3 py-1 rounded-full text-xs font-medium ${
+                        isDark
+                          ? "bg-slate-800 text-cyan-400"
+                          : "bg-cyan-50 text-cyan-600"
+                      }`}
+                    >
+                      +{project.tags.length - 3}
+                    </span>
+                  )}
+                </div>
+
+                {/* Action Links */}
+                <div
+                  className={`flex items-center gap-3 pt-4 border-t ${
+                    isDark ? "border-slate-800" : "border-gray-100"
                   }`}
                 >
-                  View Details
-                  <ExternalLink className="w-3 h-3" />
-                </a>
+                  <a
+                    href={project.github}
+                    className={`p-2.5 rounded-xl transition-all duration-300 hover:scale-110 hover:-rotate-6 ${
+                      isDark
+                        ? "bg-slate-800 text-gray-400 hover:text-white hover:bg-slate-700"
+                        : "bg-gray-100 text-gray-600 hover:text-gray-900 hover:bg-gray-200"
+                    }`}
+                    target="_blank"
+                    title="View Code"
+                  >
+                    <Github className="w-5 h-5" />
+                  </a>
+                  <a
+                    href={project.demo}
+                    className={`p-2.5 rounded-xl transition-all duration-300 hover:scale-110 hover:rotate-6 ${
+                      isDark
+                        ? "bg-slate-800 text-gray-400 hover:text-white hover:bg-slate-700"
+                        : "bg-gray-100 text-gray-600 hover:text-gray-900 hover:bg-gray-200"
+                    }`}
+                    target="_blank"
+                    title="Live Demo"
+                  >
+                    <ExternalLink className="w-5 h-5" />
+                  </a>
+                  <a
+                    href={project.details}
+                    className={`ml-auto text-sm font-semibold flex items-center gap-1.5 transition-all duration-300 group/link ${
+                      isDark
+                        ? "text-cyan-400 hover:text-cyan-300"
+                        : "text-cyan-600 hover:text-cyan-700"
+                    }`}
+                    target="_blank"
+                  >
+                    Details
+                    <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
+                  </a>
+                </div>
               </div>
+
+              {/* Animated Border Glow on Hover */}
+              <div
+                className={`absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none`}
+                style={{
+                  background: `linear-gradient(135deg, transparent, transparent)`,
+                  boxShadow: isDark
+                    ? `inset 0 0 0 1px rgba(6, 182, 212, 0.3), 0 0 40px -10px rgba(6, 182, 212, 0.3)`
+                    : `inset 0 0 0 1px rgba(6, 182, 212, 0.2), 0 0 40px -10px rgba(6, 182, 212, 0.2)`,
+                }}
+              />
             </div>
           ))}
         </div>
 
         {/* View All Button */}
-        <div className="text-center mt-12">
+        <div className="text-center mt-16">
           <button
-            className={`px-8 py-4 rounded-2xl font-semibold border-2 transition-all duration-300 hover:scale-105 active:scale-95 ${
+            className={`group px-8 py-4 rounded-2xl font-semibold transition-all duration-300 hover:scale-105 active:scale-95 relative overflow-hidden ${
               isDark
-                ? "border-cyan-500/50 text-cyan-400 hover:bg-cyan-500/10"
-                : "border-cyan-500/50 text-cyan-600 hover:bg-cyan-500/10"
+                ? "bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40"
+                : "bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40"
             }`}
           >
-            View All Projects
+            <span className="relative z-10 flex items-center gap-2">
+              View All Projects
+              <ArrowUpRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
+            </span>
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
           </button>
         </div>
       </div>

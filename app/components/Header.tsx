@@ -61,7 +61,7 @@ export function Header() {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 will-change-transform ${
           isScrolled
-            ? `mt-5 mx-4 sm:mx-8 md:mx-12 lg:mx-[50px] rounded-2xl ${
+            ? `mt-3 mx-4 sm:mx-8 md:mx-12 lg:mx-[150px] rounded-3xl ${
                 isDark
                   ? "bg-slate-950/90 backdrop-blur-md border border-cyan-500/20"
                   : "bg-white/90 backdrop-blur-md border border-cyan-500/30 shadow-lg"
@@ -69,8 +69,8 @@ export function Header() {
             : "bg-transparent"
         }`}
       >
-        <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-20">
+        <nav className="max-w-3xl mx-auto px-2 sm:px-6 lg:px-2">
+          <div className="flex items-center justify-between h-17">
             {/* Logo */}
             <a
               href="#home"
@@ -81,7 +81,7 @@ export function Header() {
               className="flex items-center gap-2 group hover:scale-105 transition-transform duration-200"
             >
               <div
-                className={`w-10 h-10 rounded-xl flex items-center justify-center ${
+                className={`w-10 h-10 m-2 rounded-xl flex items-center justify-center ${
                   isDark
                     ? "bg-gradient-to-br from-cyan-500 to-blue-600"
                     : "bg-gradient-to-br from-cyan-400 to-blue-500"

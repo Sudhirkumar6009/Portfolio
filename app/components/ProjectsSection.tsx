@@ -98,16 +98,7 @@ export function ProjectsSection() {
       <div className="relative z-10 max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-16 animate-fade-in">
-          <span
-            className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium border mb-4 ${
-              isDark
-                ? "bg-cyan-500/10 border-cyan-500/30 text-cyan-300"
-                : "bg-cyan-500/10 border-cyan-500/30 text-cyan-700"
-            }`}
-          >
-            <Folder className="w-4 h-4" />
-            My Work
-          </span>
+          <p className="mt-3" />
           <h2 className="text-4xl sm:text-5xl font-bold mb-4">
             <span className={isDark ? "text-white" : "text-gray-900"}>
               Featured{" "}

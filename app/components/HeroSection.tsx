@@ -73,15 +73,12 @@ export function HeroSection() {
         ))}
       </div>
 
-      <div className="relative z-10 mt-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 max-w-9xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-center min-h-[10vh]">
           {/* Left Side - Content */}
           <div className="text-center lg:text-left animate-fade-in">
             {/* Main Heading */}
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-              <span className={isDark ? "text-white" : "text-gray-900"}>
-                Hi, I'm
-              </span>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-10 leading-tight">
               <br />
               <span
                 className={`inline-block ${

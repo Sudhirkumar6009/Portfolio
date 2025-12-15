@@ -21,7 +21,7 @@ export function HeroSection() {
   const isDark = theme === "dark";
 
   const scrollToProjects = () => {
-    document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
+    document.getElementById("about")?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (

@@ -2,48 +2,59 @@
 
 import { useTheme } from "../context/ThemeContext";
 import { User, Code, Palette, Database, Globe } from "lucide-react";
-
 const skills = [
   {
     icon: Code,
-    name: "Frontend",
-    items: ["React", "Next.js", "TypeScript"],
+    name: "UI Craft",
+    items: ["React", "Next.js", "TypeScript", "Vite"],
   },
   {
     icon: Database,
-    name: "Backend",
-    items: ["Node.js", "Python", "PostgreSQL"],
+    name: "Server Logic",
+    items: [
+      "Node.js",
+      "MongoDB",
+      "REST APIs",
+      "IPFS",
+      "Firebase",
+      "Express.js",
+      "OAuth 2.0",
+      "Redis",
+    ],
   },
   {
     icon: Palette,
-    name: "Design",
-    items: ["Figma", "Tailwind CSS", "UI/UX"],
+    name: "Visual Design",
+    items: ["Layout Design", "Tailwind CSS", "UI/UX"],
   },
   {
     icon: Globe,
-    name: "DevOps",
-    items: ["Docker", "AWS", "CI/CD"],
+    name: "Deployment Flow",
+    items: ["Docker", "Github", "AWS", "Vercel", "Render"],
   },
 ];
 
 const experiences = [
   {
-    year: "2023",
-    title: "Senior Developer",
-    company: "Tech Corp",
-    description: "Led development of enterprise applications",
+    from_year: "July 2024",
+    to_year: "Present",
+    title: "Bachelor of Information Technology",
+    company: "Government Technological University",
+    description:
+      "Pursueing degree in Information Technology, currently in 6th semester",
   },
   {
-    year: "2022",
-    title: "Full-Stack Developer",
-    company: "StartupX",
-    description: "Built scalable web applications from scratch",
+    from_year: "Sep 2021",
+    to_year: "Jun 2024",
+    title: "Diploma in Information Technology",
+    company: "Government Technological University",
+    description: "9.05 CGPA",
   },
   {
-    year: "2021",
-    title: "Frontend Developer",
-    company: "Agency Pro",
-    description: "Created responsive websites for clients",
+    from_year: "May 2021",
+    title: "GSEB Board Examination",
+    company: "Axay Highschool",
+    description: "89.33 Percentage",
   },
 ];
 
@@ -81,9 +92,6 @@ export function AboutSection() {
         <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-4xl sm:text-5xl font-bold mb-4">
             <p className="mt-3" />
-            <span className={isDark ? "text-white" : "text-gray-900"}>
-              Know{" "}
-            </span>
             <span
               className={
                 isDark
@@ -91,8 +99,9 @@ export function AboutSection() {
                   : "text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-blue-600"
               }
             >
-              Who I Am
+              About{" "}
             </span>
+            <span className={isDark ? "text-white" : "text-gray-900"}>me</span>
           </h2>
         </div>
 
@@ -122,7 +131,7 @@ export function AboutSection() {
                       isDark ? "text-white" : "text-gray-900"
                     }`}
                   >
-                    Your Name
+                    Sudhirkumar Kuchara
                   </h3>
                   <p className={isDark ? "text-cyan-400" : "text-cyan-600"}>
                     Full-Stack Developer
@@ -185,7 +194,7 @@ export function AboutSection() {
           {/* Right Column - Experience */}
           <div>
             <h3
-              className={`text-xl font-bold mb-6 ${
+              className={`text-2xl font-bold mb-6 ml-20 hover:translate-y-1 hover:translate-x-5 hover:scale-110 transition-all duration-300 ${
                 isDark ? "text-white" : "text-gray-900"
               }`}
             >
@@ -195,24 +204,24 @@ export function AboutSection() {
               {experiences.map((exp, i) => (
                 <div
                   key={i}
-                  className={`relative pl-8 pb-6 border-l-2 last:pb-0 ${
-                    isDark ? "border-cyan-500/30" : "border-cyan-500/50"
+                  className={`relative pl-8 pb-6 border-l-2 pb-10 m-12 ${
+                    isDark ? "border-cyan-500" : "border-cyan-500"
                   }`}
                 >
                   {/* Timeline dot */}
                   <div
-                    className={`absolute -left-2 top-0 w-4 h-4 rounded-full ${
-                      isDark
-                        ? "bg-cyan-500 border-4 border-slate-950"
-                        : "bg-cyan-500 border-4 border-white"
-                    }`}
+                    className={
+                      "absolute -left-2 top-0 w-4 h-4 rounded-full bg-cyan-500 border-2 border-cyan-500"
+                    }
                   />
                   <span
-                    className={`text-sm font-medium ${
+                    className={`text-sm italic ${
                       isDark ? "text-cyan-400" : "text-cyan-600"
                     }`}
                   >
-                    {exp.year}
+                    {exp.to_year == null
+                      ? exp.from_year
+                      : `${exp.from_year} — ${exp.to_year}`}
                   </span>
                   <h4
                     className={`text-lg font-bold mt-1 ${

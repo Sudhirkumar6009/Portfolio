@@ -7,8 +7,8 @@ import { Menu, X, Moon, Sun } from "lucide-react";
 
 const navLinks = [
   { label: "Home", href: "#home" },
-  { label: "Projects", href: "#projects" },
   { label: "About", href: "#about" },
+  { label: "Projects", href: "#projects" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -26,7 +26,7 @@ export function Header() {
       requestAnimationFrame(() => {
         setIsScrolled(window.scrollY > 50);
 
-        const sections = ["home", "projects", "about", "contact"];
+        const sections = ["home", "about", "projects", "contact"];
         for (const section of sections) {
           const element = document.getElementById(section);
           if (element) {

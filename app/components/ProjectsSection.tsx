@@ -1,9 +1,29 @@
 "use client";
-
+import { useState, useEffect } from "react";
 import { useTheme } from "../context/ThemeContext";
-import { ExternalLink, Github, Star, ArrowUpRight } from "lucide-react";
+import { ExternalLink, Github, Star, ArrowUpRight, Link } from "lucide-react";
 
 export function ProjectsSection() {
+  const shuffle_rn_projects = [
+    "/assets/shuffle_rn_1.png",
+    "/assets/shuffle_rn_2.png",
+    "/assets/shuffle_rn_3.png",
+  ];
+  const shuffle_globe = [
+    "/assets/globetrotter1.png",
+    "/assets/globetrotter2.png",
+  ];
+  const [globeImage, setGlobeImage] = useState(shuffle_globe[0]);
+  const [image, setImage] = useState(shuffle_rn_projects[0]);
+  useEffect(() => {
+    const randomShuffle = Math.floor(
+      Math.random() * shuffle_rn_projects.length
+    );
+    setImage(shuffle_rn_projects[randomShuffle]);
+    const randomShuffle2 = Math.floor(Math.random() * shuffle_globe.length);
+    setGlobeImage(shuffle_globe[randomShuffle2]);
+  });
+
   const { theme } = useTheme();
   const isDark = theme === "dark";
   const projects = [
@@ -20,6 +40,7 @@ export function ProjectsSection() {
       details:
         "https://github.com/Sudhirkumar6009/StorageX/blob/main/README.md",
       featured: true,
+      Live: true,
     },
     {
       title: "LibraXpert",
@@ -30,8 +51,9 @@ export function ProjectsSection() {
       github: "https://github.com/Sudhirkumar6009/LibraXpert",
       demo: "https://libraxpert.vercel.app/",
       details:
-        "https://github.com/Sudhirkumar6009/StorageX/blob/main/README.md",
+        "https://github.com/Sudhirkumar6009/LibraXpert/blob/main/README.md",
       featured: true,
+      Live: true,
     },
     {
       title: "StackIt Q/A Forum",
@@ -40,40 +62,70 @@ export function ProjectsSection() {
       tags: ["Express.js", "React", "Tailwind", "MongoDB"],
       image: "/assets/stackIt.png",
       github: "https://github.com/Sudhirkumar6009/StackIt_Odoo",
-      demo: "https://libraxpert.vercel.app/",
+      demo: "https://stackit-new.vercel.app/",
       details:
         "https://github.com/Sudhirkumar6009/StackIt_Odoo/blob/main/README.md",
       featured: true,
+      Live: true,
     },
     {
-      title: "Fitness Tracking App",
+      title: "React Native Projects",
       description:
-        "Mobile-first fitness app with workout tracking and progress charts.",
-      tags: ["React Native", "Redux", "MongoDB"],
-      image: "/projects/fitness-app.png",
-      github: "#",
-      demo: "#",
-      featured: false,
-    },
-    {
-      title: "Portfolio Generator",
-      description:
-        "Dynamic portfolio builder with customizable themes and live preview.",
-      tags: ["Next.js", "Prisma", "Tailwind"],
-      image: "/projects/portfolio-gen.png",
-      github: "#",
-      demo: "#",
+        "Completed an exciting 50-day React Native journey by building real, functional apps like a Clock App, NewsActive, To-Do App, and Weather Cast. Each app showcases clean UI, smooth performance, and even comes with downloadable APKs for instant Android testing.",
+      tags: [
+        "React Native",
+        "Firebase",
+        "Android SDK, ADB",
+        "Javascript",
+        "Android Studio",
+        "NewsAPI",
+        "",
+      ],
+      image: image,
+      github: "https://github.com/Sudhirkumar6009/React-Native-Projects",
+      demo: "https://github.com/Sudhirkumar6009/React-Native-Projects/tree/main/Applications",
+      details:
+        "https://github.com/Sudhirkumar6009/React-Native-Projects/blob/main/README.md",
       featured: true,
+      Live: true,
     },
     {
-      title: "Weather Dashboard",
+      title: "ExpenseFlow",
       description:
-        "Beautiful weather app with location-based forecasts and maps.",
-      tags: ["React", "OpenWeather API", "Mapbox"],
-      image: "/projects/weather-app.png",
-      github: "#",
-      demo: "#",
+        "Odoo IITGN x Hackathon Project : expense management with intelligent automation, powerful analytics, and seamless approval workflows.",
+      tags: ["Express.js", "Next.js", "React", "Tailwind", "MongoDB"],
+      image: `${
+        isDark ? "/assets/expense_dark.png" : "/assets/expense_light.png"
+      }`,
+      github: "https://github.com/Sudhirkumar6009/ExpenseFlow",
+      demo: "https://github.com/Sudhirkumar6009/ExpenseFlow",
+      details:
+        "https://github.com/Sudhirkumar6009/ExpenseFlow/blob/main/README.md",
       featured: false,
+      Live: false,
+    },
+    {
+      title: "GlobeTrotter",
+      description:
+        "Odoo Hackathon'25 Finalist Project — GlobeTrotter is a clean and intuitive travel-management system designed to simplify trip planning with smart organization. Although it didn’t win, the project demonstrates strong problem-solving, UI design, and practical feature implementation",
+      tags: [
+        "GEMINI AI",
+        "Node.js",
+        "MongoDB",
+        "React",
+        "UI/UX",
+        "TypeScript",
+        "Tailwind CSS",
+      ],
+      image: `${
+        isDark ? "/assets/globetrotter2.png" : "/assets/globetrotter1.png"
+      }`,
+      github: "https://github.com/Sudhirkumar6009/GlobeTrotter",
+      demo: "https://github.com/Sudhirkumar6009/GlobeTrotter",
+      details:
+        "https://github.com/Sudhirkumar6009/GlobeTrotter/blob/main/README.md",
+      featured: true,
+      Live: true,
     },
   ];
   return (
@@ -134,7 +186,7 @@ export function ProjectsSection() {
           {projects.map((project, i) => (
             <div
               key={i}
-              className={`group relative border border-cyan-200 rounded-3xl overflow-hidden transition-all duration-500 hover:scale-[1.02] ${
+              className={`group relative border border-cyan-800 rounded-3xl overflow-hidden transition-all duration-500 hover:scale-[1.02] ${
                 isDark
                   ? "bg-slate-900/80 shadow-2xl shadow-black/20"
                   : "bg-white shadow-xl shadow-gray-200/50"
@@ -169,19 +221,26 @@ export function ProjectsSection() {
                   </div>
                 )}
 
-                {/* Hover Overlay with View Button - Slides up from bottom */}
-                <div className="absolute inset-y-0 end-2 h-full elevation-20 translate-y-full group-hover:translate-y-0 transition-all duration-500 ease-out flex items-end justify-center pb-2">
-                  <a
-                    href={project.demo}
-                    className={`px-4 py-3 bg-cyan-500 rounded-full font-semibold flex items-center gap-2 transition-all duration-300 hover:bg-cyan-600 hover:scale-105 shadow-lg ${
-                      isDark ? "text-black" : "text-white"
-                    }`}
-                    target="_blank"
-                  >
-                    Live
-                    <ArrowUpRight className="w-4 h-4" />
-                  </a>
-                </div>
+                {project.Live && (
+                  <>
+                    {/* Hover Overlay with View Button - Slides up from bottom */}
+                    <div className="absolute inset-y-0 end-2 h-full elevation-20 translate-y-full group-hover:translate-y-0 transition-all duration-500 ease-out flex items-end justify-center pb-2">
+                      <a
+                        href={project.demo}
+                        className={`px-4 py-3 bg-cyan-500 rounded-full font-semibold flex items-center gap-2 transition-all duration-300 hover:bg-cyan-600 hover:scale-105 shadow-lg ${
+                          isDark ? "text-black" : "text-white"
+                        }`}
+                        target="_blank"
+                      >
+                        {project.title == "React Native Projects" ||
+                        project.title == "GlobeTrotter"
+                          ? "View"
+                          : "Live"}
+                        <ArrowUpRight className="w-4 h-4" />
+                      </a>
+                    </div>
+                  </>
+                )}
               </div>
 
               {/* Content Area */}
@@ -294,19 +353,21 @@ export function ProjectsSection() {
 
         {/* View All Button */}
         <div className="text-center mt-16">
-          <button
-            className={`group px-8 py-4 rounded-2xl font-semibold transition-all duration-300 hover:scale-105 active:scale-95 relative overflow-hidden ${
-              isDark
-                ? "bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40"
-                : "bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40"
-            }`}
-          >
-            <span className="relative z-10 flex items-center gap-2">
-              View All Projects
-              <ArrowUpRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
-            </span>
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-          </button>
+          <a href="https://github.com/Sudhirkumar6009" target="_blank">
+            <button
+              className={`cursor-pointer group px-8 py-4 rounded-2xl font-semibold transition-all duration-300 hover:scale-105 active:scale-95 relative overflow-hidden ${
+                isDark
+                  ? "bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40"
+                  : "bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40"
+              }`}
+            >
+              <span className="relative z-10 flex items-center gap-1">
+                View All Projects
+                <ArrowUpRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
+              </span>
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            </button>
+          </a>
         </div>
       </div>
     </section>

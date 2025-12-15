@@ -153,7 +153,7 @@ export function HeroSection() {
                     isDark ? "text-cyan-400" : "text-cyan-600"
                   }`}
                 />
-                <p className="text-sm text-gray-500">Years Experience</p>
+                <p className="text-sm text-gray-500">Years Tech Experience</p>
               </div>
 
               <div className="flex flex-col items-center">

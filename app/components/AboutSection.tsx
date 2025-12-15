@@ -122,7 +122,7 @@ export function AboutSection() {
                       isDark ? "text-white" : "text-gray-900"
                     }`}
                   >
-                    Sudhirkumar Kuchara
+                    Your Name
                   </h3>
                   <p className={isDark ? "text-cyan-400" : "text-cyan-600"}>
                     Full-Stack Developer
@@ -189,7 +189,7 @@ export function AboutSection() {
                 isDark ? "text-white" : "text-gray-900"
               }`}
             >
-              Experience
+              Education
             </h3>
             <div className="space-y-6">
               {experiences.map((exp, i) => (

@@ -178,8 +178,8 @@ export function HeroSection() {
           <div className="hidden lg:flex items-center justify-center">
             <div className="relative w-[420px] h-[420px] rounded-full overflow-hidden">
               <MetaBalls
-                color={isDark ? "#22d3ee" : "#0891b2"}
-                cursorBallColor={isDark ? "#3b82f6" : "#2563eb"}
+                color={isDark ? "#22d3ee" : "#5bc0eeff"}
+                cursorBallColor={isDark ? "#3b82f6" : "#4e80edff"}
                 cursorBallSize={2}
                 ballCount={15}
                 animationSize={30}

@@ -123,7 +123,10 @@ export function AboutSection() {
                       : "bg-gradient-to-br from-cyan-50 to-blue-50 border border-cyan-200"
                   }`}
                 >
-                  👨‍💻
+                  <img
+                    src={"/assets/me.png"}
+                    className="inset-10 w-full h-full object-cover rounded-2xl"
+                  />
                 </div>
                 <div>
                   <h3

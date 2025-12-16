@@ -50,7 +50,7 @@ export function Footer() {
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid md:grid-cols-3 gap-12 mb-12">
+        <div className="grid md:grid-cols-2 gap-12 mb-12">
           {/* Brand */}
           <div>
             <div className="flex items-center gap-2 mb-4">
@@ -96,61 +96,28 @@ export function Footer() {
           </div>
 
           {/* Quick Links */}
-          <div>
-            <h3
-              className={`font-bold text-lg mb-4 ${
-                isDark ? "text-white" : "text-gray-900"
-              }`}
-            >
-              Quick Links
-            </h3>
-            <ul className="space-y-3">
-              {quickLinks.map((link, i) => (
-                <li key={i}>
-                  <button
-                    onClick={() => scrollToSection(link.href)}
-                    className={`transition-colors duration-200 ${
-                      isDark
-                        ? "text-gray-400 hover:text-cyan-400"
-                        : "text-gray-600 hover:text-cyan-600"
-                    }`}
-                  >
-                    {link.label}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Newsletter */}
-          <div>
-            <h3
-              className={`font-bold text-lg mb-4 ${
-                isDark ? "text-white" : "text-gray-900"
-              }`}
-            >
-              Stay Updated
-            </h3>
-            <p className={`mb-4 ${isDark ? "text-gray-400" : "text-gray-600"}`}>
-              Subscribe for the latest updates and insights.
-            </p>
-            <form className="flex gap-2">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className={`flex-1 px-4 py-3 rounded-xl border transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 ${
-                  isDark
-                    ? "bg-slate-800 border-slate-700 text-white placeholder:text-gray-500"
-                    : "bg-white border-gray-200 text-gray-900 placeholder:text-gray-400"
-                }`}
-              />
-              <button
-                type="submit"
-                className="px-4 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-medium transition-transform duration-200 hover:scale-105 active:scale-95"
-              >
-                Subscribe
-              </button>
-            </form>
+          <div className="bg-transparent">
+            <div className="bg-transparent h-full w-full pl-30 text-cyan-500">
+              <h3 className={"font-bold text-lg mb-4 text-cyan-500`"}>
+                Quick Links
+              </h3>
+              <ul className="space-y-3">
+                {quickLinks.map((link, i) => (
+                  <li key={i}>
+                    <button
+                      onClick={() => scrollToSection(link.href)}
+                      className={`transition-colors duration-200 ${
+                        isDark
+                          ? "text-gray-400 hover:text-cyan-400"
+                          : "text-gray-600 hover:text-cyan-600"
+                      }`}
+                    >
+                      {link.label}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
 

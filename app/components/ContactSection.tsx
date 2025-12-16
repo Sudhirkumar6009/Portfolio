@@ -1,49 +1,94 @@
 "use client";
 
 import { useTheme } from "../context/ThemeContext";
-import { Mail, Phone, MapPin, Send, MessageSquare } from "lucide-react";
-import { useState } from "react";
+import {
+  Mail,
+  MapPin,
+  Github,
+  Linkedin,
+  Calendar,
+  Coffee,
+  ArrowRight,
+  Sparkles,
+  PhoneCall,
+  Instagram,
+} from "lucide-react";
+
+// Custom X (Twitter) Icon
+const XIcon = ({ className }: { className?: string }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="16"
+    height="16"
+    fill="currentColor"
+    className={className}
+    viewBox="0 0 16 16"
+  >
+    <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z" />
+  </svg>
+);
 
 const contactInfo = [
   {
     icon: Mail,
     label: "Email",
-    value: "your@email.com",
-    href: "mailto:your@email.com",
+    value: "sudhir.kuchara@email.com",
+    href: "mailto:sudhir.kuchara@email.com",
   },
   {
-    icon: Phone,
+    icon: PhoneCall,
     label: "Phone",
-    value: "+1 234 567 890",
-    href: "tel:+1234567890",
+    value: "+91 88499 41378",
+    href: "tel:+918849941378",
   },
   {
     icon: MapPin,
     label: "Location",
-    value: "Your City, Country",
+    value: "Ahmedabad, India",
     href: "#",
   },
+];
+
+const socialLinks = [
+  {
+    icon: Github,
+    label: "GitHub",
+    href: "https://github.com/Sudhirkumar6009",
+    color: "hover:text-gray-900 dark:hover:text-white",
+    bgColor: "hover:bg-gray-100 dark:hover:bg-gray-800",
+  },
+  {
+    icon: Linkedin,
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/sudhirkumar-kuchara",
+    color: "hover:text-blue-600",
+    bgColor: "hover:bg-blue-50 dark:hover:bg-blue-900/30",
+  },
+  {
+    icon: XIcon,
+    label: "X",
+    href: "https://x.com/Sudhirkuchara",
+    color: "hover:text-sky-500",
+    bgColor: "hover:bg-sky-50 dark:hover:bg-sky-900/30",
+  },
+  {
+    icon: Instagram,
+    label: "Instagram",
+    href: "https://www.instagram.com/_sudhirkumar123_",
+    color: "hover:text-sky-500",
+    bgColor: "hover:bg-sky-50 dark:hover:bg-sky-900/30",
+  },
+];
+
+const services = [
+  { title: "Web Development", description: "Modern, responsive websites" },
+  { title: "UI/UX Design", description: "Beautiful, intuitive interfaces" },
+  { title: "Consulting", description: "Technical guidance & strategy" },
 ];
 
 export function ContactSection() {
   const { theme } = useTheme();
   const isDark = theme === "dark";
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    setIsSubmitting(false);
-    setFormData({ name: "", email: "", subject: "", message: "" });
-    alert("Message sent successfully!");
-  };
 
   return (
     <section
@@ -93,197 +138,180 @@ export function ContactSection() {
               isDark ? "text-gray-400" : "text-gray-600"
             }`}
           >
-            Have a project in mind or want to collaborate? Drop me a message!
+            Have a project in mind or want to collaborate? Contact me
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-5 gap-8">
-          {/* Contact Info */}
-          <div className="lg:col-span-2 space-y-6">
-            <div
-              className={`p-8 rounded-3xl border ${
-                isDark
-                  ? "bg-slate-900/50 border-slate-800"
-                  : "bg-white border-gray-200 shadow-lg"
-              }`}
-            >
+        <div className="grid lg:grid-cols-3 gap-8">
+          {/* Services */}
+          <div
+            className={`p-8 rounded-3xl border ${
+              isDark
+                ? "bg-slate-900/50 border-slate-800"
+                : "bg-white border-gray-200 shadow-lg"
+            }`}
+          >
+            <div className="flex items-center gap-3 mb-6">
+              <div
+                className={`p-3 rounded-xl ${
+                  isDark ? "bg-cyan-500/20" : "bg-cyan-50"
+                }`}
+              >
+                <Coffee
+                  className={`w-5 h-5 ${
+                    isDark ? "text-cyan-400" : "text-cyan-600"
+                  }`}
+                />
+              </div>
               <h3
-                className={`text-xl font-bold mb-6 ${
+                className={`text-xl font-bold ${
                   isDark ? "text-white" : "text-gray-900"
                 }`}
               >
-                Contact Information
+                Services
               </h3>
-              <div className="space-y-4">
-                {contactInfo.map((info, i) => (
-                  <a
-                    key={i}
-                    href={info.href}
-                    className={`flex items-center gap-4 p-4 rounded-xl transition-all duration-200 hover:-translate-y-1 ${
-                      isDark
-                        ? "bg-slate-800/50 hover:bg-slate-800"
-                        : "bg-gray-50 hover:bg-gray-100"
+            </div>
+            <div className="space-y-4">
+              {services.map((service, i) => (
+                <div
+                  key={i}
+                  className={`p-4 rounded-xl ${
+                    isDark ? "bg-slate-800/50" : "bg-gray-50"
+                  }`}
+                >
+                  <h4
+                    className={`font-semibold mb-1 ${
+                      isDark ? "text-white" : "text-gray-900"
                     }`}
                   >
-                    <div
-                      className={`p-3 rounded-xl ${
-                        isDark ? "bg-cyan-500/20" : "bg-cyan-50"
-                      }`}
-                    >
-                      <info.icon
-                        className={`w-5 h-5 ${
-                          isDark ? "text-cyan-400" : "text-cyan-600"
-                        }`}
-                      />
-                    </div>
-                    <div>
-                      <p
-                        className={`text-sm ${
-                          isDark ? "text-gray-400" : "text-gray-500"
-                        }`}
-                      >
-                        {info.label}
-                      </p>
-                      <p
-                        className={`font-medium ${
-                          isDark ? "text-white" : "text-gray-900"
-                        }`}
-                      >
-                        {info.value}
-                      </p>
-                    </div>
-                  </a>
-                ))}
-              </div>
+                    {service.title}
+                  </h4>
+                  <p
+                    className={`text-sm ${
+                      isDark ? "text-gray-400" : "text-gray-600"
+                    }`}
+                  >
+                    {service.description}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
 
-          {/* Contact Form */}
-          <div className="lg:col-span-3">
-            <form
-              onSubmit={handleSubmit}
-              className={`p-8 rounded-3xl border ${
-                isDark
-                  ? "bg-slate-900/50 border-slate-800"
-                  : "bg-white border-gray-200 shadow-lg"
+          {/* Contact Info */}
+          <div
+            className={`p-8 rounded-3xl border ${
+              isDark
+                ? "bg-slate-900/50 border-slate-800"
+                : "bg-white border-gray-200 shadow-lg"
+            }`}
+          >
+            <h3
+              className={`text-xl font-bold mb-6 ${
+                isDark ? "text-white" : "text-gray-900"
               }`}
             >
-              <div className="grid sm:grid-cols-2 gap-6 mb-6">
-                <div>
-                  <label
-                    className={`block text-sm font-medium mb-2 ${
-                      isDark ? "text-gray-300" : "text-gray-700"
-                    }`}
-                  >
-                    Name
-                  </label>
-                  <input
-                    type="text"
-                    value={formData.name}
-                    onChange={(e) =>
-                      setFormData({ ...formData, name: e.target.value })
-                    }
-                    className={`w-full px-4 py-3 rounded-xl border transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 ${
-                      isDark
-                        ? "bg-slate-800 border-slate-700 text-white placeholder:text-gray-500"
-                        : "bg-gray-50 border-gray-200 text-gray-900 placeholder:text-gray-400"
-                    }`}
-                    placeholder="Your name"
-                    required
-                  />
-                </div>
-                <div>
-                  <label
-                    className={`block text-sm font-medium mb-2 ${
-                      isDark ? "text-gray-300" : "text-gray-700"
-                    }`}
-                  >
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    value={formData.email}
-                    onChange={(e) =>
-                      setFormData({ ...formData, email: e.target.value })
-                    }
-                    className={`w-full px-4 py-3 rounded-xl border transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 ${
-                      isDark
-                        ? "bg-slate-800 border-slate-700 text-white placeholder:text-gray-500"
-                        : "bg-gray-50 border-gray-200 text-gray-900 placeholder:text-gray-400"
-                    }`}
-                    placeholder="your@email.com"
-                    required
-                  />
-                </div>
-              </div>
-
-              <div className="mb-6">
-                <label
-                  className={`block text-sm font-medium mb-2 ${
-                    isDark ? "text-gray-300" : "text-gray-700"
+              Contact Info
+            </h3>
+            <div className="space-y-4">
+              {contactInfo.map((info, i) => (
+                <a
+                  key={i}
+                  href={info.href}
+                  className={`flex items-center gap-4 p-4 rounded-xl transition-all duration-200 hover:-translate-y-1 ${
+                    isDark
+                      ? "bg-slate-800/50 hover:bg-slate-800"
+                      : "bg-gray-50 hover:bg-gray-100"
                   }`}
                 >
-                  Subject
-                </label>
-                <input
-                  type="text"
-                  value={formData.subject}
-                  onChange={(e) =>
-                    setFormData({ ...formData, subject: e.target.value })
-                  }
-                  className={`w-full px-4 py-3 rounded-xl border transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 ${
-                    isDark
-                      ? "bg-slate-800 border-slate-700 text-white placeholder:text-gray-500"
-                      : "bg-gray-50 border-gray-200 text-gray-900 placeholder:text-gray-400"
-                  }`}
-                  placeholder="How can I help you?"
-                  required
-                />
-              </div>
+                  <div
+                    className={`p-3 rounded-xl ${
+                      isDark ? "bg-cyan-500/20" : "bg-cyan-50"
+                    }`}
+                  >
+                    <info.icon
+                      className={`w-5 h-5 ${
+                        isDark ? "text-cyan-400" : "text-cyan-600"
+                      }`}
+                    />
+                  </div>
+                  <div>
+                    <p
+                      className={`text-sm ${
+                        isDark ? "text-gray-400" : "text-gray-500"
+                      }`}
+                    >
+                      {info.label}
+                    </p>
+                    <p
+                      className={`font-medium ${
+                        isDark ? "text-white" : "text-gray-900"
+                      }`}
+                    >
+                      {info.value}
+                    </p>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
 
-              <div className="mb-6">
-                <label
-                  className={`block text-sm font-medium mb-2 ${
-                    isDark ? "text-gray-300" : "text-gray-700"
+          {/* Social Links */}
+          <div
+            className={`p-8 rounded-3xl border ${
+              isDark
+                ? "bg-slate-900/50 border-slate-800"
+                : "bg-white border-gray-200 shadow-lg"
+            }`}
+          >
+            <h3
+              className={`text-xl font-bold mb-6 ${
+                isDark ? "text-white" : "text-gray-900"
+              }`}
+            >
+              Connect With Me
+            </h3>
+            <div className="space-y-4">
+              {socialLinks.map((social, i) => (
+                <a
+                  key={i}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`flex items-center gap-4 p-4 rounded-xl transition-all duration-200 hover:-translate-y-1 ${
+                    isDark
+                      ? "bg-slate-800/50 hover:bg-slate-800"
+                      : "bg-gray-50 hover:bg-gray-100"
                   }`}
                 >
-                  Message
-                </label>
-                <textarea
-                  value={formData.message}
-                  onChange={(e) =>
-                    setFormData({ ...formData, message: e.target.value })
-                  }
-                  rows={5}
-                  className={`w-full px-4 py-3 rounded-xl border transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 resize-none ${
-                    isDark
-                      ? "bg-slate-800 border-slate-700 text-white placeholder:text-gray-500"
-                      : "bg-gray-50 border-gray-200 text-gray-900 placeholder:text-gray-400"
-                  }`}
-                  placeholder="Tell me about your project..."
-                  required
-                />
-              </div>
-
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className={`w-full py-4 rounded-xl font-semibold flex items-center justify-center gap-2 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 ${
-                  isDark
-                    ? "bg-gradient-to-r from-cyan-500 to-blue-500 text-white"
-                    : "bg-gradient-to-r from-cyan-500 to-blue-500 text-white"
-                }`}
-              >
-                {isSubmitting ? (
-                  "Sending..."
-                ) : (
-                  <>
-                    Send Message
-                    <Send className="w-4 h-4" />
-                  </>
-                )}
-              </button>
-            </form>
+                  <div
+                    className={`p-3 rounded-xl ${
+                      isDark ? "bg-slate-700" : "bg-gray-100"
+                    }`}
+                  >
+                    <social.icon
+                      className={`w-5 h-5 ${
+                        isDark ? "text-gray-300" : "text-gray-700"
+                      }`}
+                    />
+                  </div>
+                  <div className="flex-1">
+                    <p
+                      className={`font-medium ${
+                        isDark ? "text-white" : "text-gray-900"
+                      }`}
+                    >
+                      {social.label}
+                    </p>
+                  </div>
+                  <ArrowRight
+                    className={`w-4 h-4 ${
+                      isDark ? "text-gray-500" : "text-gray-400"
+                    }`}
+                  />
+                </a>
+              ))}
+            </div>
           </div>
         </div>
       </div>

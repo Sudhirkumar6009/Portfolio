@@ -131,7 +131,7 @@ export function ProjectsSection() {
   return (
     <section
       id="projects"
-      className={`py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden ${
+      className={`px-4 sm:px-6 lg:px-8 relative overflow-hidden ${
         isDark
           ? "bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950"
           : "bg-gradient-to-b from-gray-50 via-white to-gray-50"
@@ -153,7 +153,7 @@ export function ProjectsSection() {
         />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto">
+      <div className="relative mt-23 z-10 max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-16 animate-fade-in">
           <p className="mt-3" />

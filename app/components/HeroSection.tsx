@@ -5,6 +5,7 @@ import { ArrowDown } from "lucide-react";
 import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button";
 import CountUp from "@/components/CountUp";
 import RotatingText from "@/components/RotatingText";
+import MetaBalls from "@/components/MetaBalls";
 
 // Reduced particles for better performance
 const particles = [
@@ -73,12 +74,12 @@ export function HeroSection() {
         ))}
       </div>
 
-      <div className="relative z-10 max-w-9xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 items-center min-h-[10vh]">
+      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid lg:grid-cols-2 gap-20 items-center min-h-[10vh]">
           {/* Left Side - Content */}
           <div className="text-center lg:text-left animate-fade-in">
             {/* Main Heading */}
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-10 leading-tight">
+            <h1 className="text-xl sm:text-4xl md:text-5xl lg:text-5xl font-bold mb-10 leading-tight">
               <br />
               <span
                 className={`inline-block ${
@@ -173,27 +174,21 @@ export function HeroSection() {
             </div>
           </div>
 
-          {/* Right Side - Simple Illustration */}
+          {/* Right Side – MetaBalls */}
           <div className="hidden lg:flex items-center justify-center">
-            <div className="relative w-full max-w-md">
-              {/* Simple glow */}
-              <div
-                className={`absolute inset-0 rounded-full opacity-30 ${
-                  isDark ? "bg-cyan-500" : "bg-cyan-400"
-                }`}
-                style={{ filter: "blur(80px)" }}
+            <div className="relative w-[420px] h-[420px] rounded-full overflow-hidden">
+              <MetaBalls
+                color={isDark ? "#22d3ee" : "#0891b2"}
+                cursorBallColor={isDark ? "#3b82f6" : "#2563eb"}
+                cursorBallSize={2}
+                ballCount={15}
+                animationSize={30}
+                enableMouseInteraction={true}
+                enableTransparency={true}
+                hoverSmoothness={0.05}
+                clumpFactor={1}
+                speed={0.3}
               />
-
-              {/* Developer Icon */}
-              <div
-                className={`relative z-10 w-64 h-64 mx-auto rounded-3xl flex items-center justify-center text-9xl ${
-                  isDark ? "bg-slate-800/50" : "bg-white/50"
-                } border ${
-                  isDark ? "border-cyan-500/20" : "border-cyan-500/30"
-                }`}
-              >
-                👨‍💻
-              </div>
             </div>
           </div>
         </div>

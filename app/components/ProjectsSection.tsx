@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { useTheme } from "../context/ThemeContext";
-import { ExternalLink, Github, Star, ArrowUpRight, Link } from "lucide-react";
+import { ExternalLink, Github, Star, ArrowUpRight, Trophy } from "lucide-react";
 
 export function ProjectsSection() {
   const shuffle_rn_projects = [
@@ -17,12 +17,12 @@ export function ProjectsSection() {
   const [image, setImage] = useState(shuffle_rn_projects[0]);
   useEffect(() => {
     const randomShuffle = Math.floor(
-      Math.random() * shuffle_rn_projects.length
+      Math.random() * shuffle_rn_projects.length,
     );
     setImage(shuffle_rn_projects[randomShuffle]);
     const randomShuffle2 = Math.floor(Math.random() * shuffle_globe.length);
     setGlobeImage(shuffle_globe[randomShuffle2]);
-  });
+  }, []);
 
   const { theme } = useTheme();
   const isDark = theme === "dark";
@@ -43,11 +43,26 @@ export function ProjectsSection() {
       Live: true,
     },
     {
+      title: "StorageX",
+      description:
+        "StorageX is a decentralized file storage platform that combines IPFS technology with blockchain-based authentication to deliver secure, censorship-resistant data storage",
+      tags: ["TypeScript", "Web3Auth", "IPFS", "MetaMask", "Node.js"],
+      image: `${
+        isDark ? "/assets/storagex_dark.png" : "/assets/storagex_light.png"
+      }`,
+      github: "https://github.com/Sudhirkumar6009/StorageX",
+      demo: "https://storage-x-47xm.vercel.app/",
+      details:
+        "https://github.com/Sudhirkumar6009/StorageX/blob/main/README.md",
+      featured: true,
+      Live: true,
+    },
+    {
       title: "LibraXpert",
       description:
         "LibraXpert is an advanced Cross-platform Library Management System designed for educational institutions, public libraries, and private collections",
       tags: ["React", "Node.js", "MongoDB", "Express", "Tailwind"],
-      image: "/assets/libraXpert.png",
+      image: "/assets/mockup_libraXpert.png",
       github: "https://github.com/Sudhirkumar6009/LibraXpert",
       demo: "https://libraxpert.vercel.app/",
       details:
@@ -88,21 +103,6 @@ export function ProjectsSection() {
         "https://github.com/Sudhirkumar6009/React-Native-Projects/blob/main/README.md",
       featured: true,
       Live: true,
-    },
-    {
-      title: "ExpenseFlow",
-      description:
-        "Odoo IITGN x Hackathon Project : expense management with intelligent automation, powerful analytics, and seamless approval workflows.",
-      tags: ["Express.js", "Next.js", "React", "Tailwind", "MongoDB"],
-      image: `${
-        isDark ? "/assets/expense_dark.png" : "/assets/expense_light.png"
-      }`,
-      github: "https://github.com/Sudhirkumar6009/ExpenseFlow",
-      demo: "https://github.com/Sudhirkumar6009/ExpenseFlow",
-      details:
-        "https://github.com/Sudhirkumar6009/ExpenseFlow/blob/main/README.md",
-      featured: false,
-      Live: false,
     },
     {
       title: "GlobeTrotter",
@@ -186,61 +186,71 @@ export function ProjectsSection() {
           {projects.map((project, i) => (
             <div
               key={i}
-              className={`group relative border border-cyan-800 rounded-3xl overflow-hidden transition-all duration-500 hover:scale-[1.02] ${
-                isDark
-                  ? "bg-slate-900/80 shadow-2xl shadow-black/20"
-                  : "bg-white shadow-xl shadow-gray-200/50"
+              className={`group relative rounded-3xl overflow-hidden border backdrop-blur-xl transition-all duration-500 hover:-translate-y-1.5 hover:scale-[1.01] ${
+                i === 0
+                  ? isDark
+                    ? "border-amber-300/70 bg-transparent shadow-[0_22px_55px_-20px_rgba(251,191,36,0.45)]"
+                    : "border-amber-400/70 bg-transparent shadow-[0_22px_50px_-20px_rgba(217,119,6,0.32)]"
+                  : isDark
+                    ? "border-blue-300/45 bg-transparent shadow-[0_16px_45px_-24px_rgba(0,0,0,0.9)] hover:border-blue-300/70"
+                    : "border-blue-300/65 bg-transparent shadow-[0_18px_40px_-24px_rgba(15,23,42,0.2)] hover:border-blue-400/70"
               }`}
               style={{ animationDelay: `${i * 100}ms` }}
             >
-              {/* Image/Preview Area */}
-              <div className="relative h-48 overflow-hidden">
-                {/* Fallback Background */}
-                <div
-                  className={`absolute inset-0 ${
-                    isDark
-                      ? "bg-white sm:bg-slate-800"
-                      : "bg-white sm:bg-gray-200"
-                  }`}
-                />
+              <div className="absolute inset-0 pointer-events-none bg-transparent" />
+              <div className="absolute inset-0 pointer-events-none bg-transparent" />
+              <div
+                className={`absolute inset-x-0 top-0 h-[2px] pointer-events-none ${
+                  i === 0 ? "bg-amber-300/90" : "bg-blue-400/90"
+                }`}
+              />
 
-                {/* Project Image as Background */}
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="absolute inset-2 sm:inset-0 w-[calc(100%-1rem)] sm:w-full h-[calc(100%-1rem)] sm:h-full object-cover transition-all duration-900 group-hover:scale-110 rounded-xl sm:rounded-none"
-                  onError={(e) => {
-                    (e.target as HTMLImageElement).style.display = "none";
-                  }}
-                />
+              {/* Mockup Preview Area */}
+              <div className="relative h-64 overflow-hidden border-b border-white/8">
+                <div className="absolute inset-0">
+                  <div className="absolute inset-0 bg-transparent" />
 
-                {/* Featured Badge */}
-                {project.featured && (
-                  <div className="absolute top-2 left-2 px-1.5 py-1.5 rounded-full text-xs font-semibold flex items-center backdrop-blur-md border border-white/10">
-                    <Star className="w-3 h-3 fill-yellow-400 stroke-yellow-400" />
-                  </div>
-                )}
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="relative z-10 w-full h-full object-contain transition-transform duration-500 group-hover:scale-[1.015]"
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).style.display = "none";
+                    }}
+                  />
 
-                {project.Live && (
-                  <>
-                    {/* Hover Overlay with View Button - Slides up from bottom */}
-                    <div className="absolute inset-y-0 end-2 h-full elevation-20 translate-y-full group-hover:translate-y-0 transition-all duration-500 ease-out flex items-end justify-center pb-2">
-                      <a
-                        href={project.demo}
-                        className={`px-4 py-3 bg-cyan-500 rounded-full font-semibold flex items-center gap-2 transition-all duration-300 hover:bg-cyan-600 hover:scale-105 shadow-lg ${
-                          isDark ? "text-black" : "text-white"
-                        }`}
-                        target="_blank"
-                      >
-                        {project.title == "React Native Projects" ||
-                        project.title == "GlobeTrotter"
-                          ? "View"
-                          : "Live"}
-                        <ArrowUpRight className="w-4 h-4" />
-                      </a>
+                  <div className="absolute bottom-1 left-1/2 -translate-x-1/2 h-8 w-[76%] blur-xl rounded-full bg-transparent" />
+
+                  {project.Live && (
+                    <a
+                      href={project.demo}
+                      className={`absolute right-3 bottom-3 z-20 px-3.5 py-2 rounded-full text-sm font-semibold flex items-center gap-1.5 transition-all duration-300 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 bg-cyan-500 hover:bg-cyan-600 shadow-lg ${
+                        isDark ? "text-black" : "text-white"
+                      }`}
+                      target="_blank"
+                    >
+                      {project.title == "React Native Projects" ||
+                      project.title == "GlobeTrotter"
+                        ? "View"
+                        : "Live"}
+                      <ArrowUpRight className="w-4 h-4" />
+                    </a>
+                  )}
+
+                  {i === 0 && (
+                    <div className="absolute top-3 right-3 z-30 px-3.5 py-1.5 rounded-full text-[11px] font-semibold tracking-[0.08em] uppercase bg-amber-300 text-amber-950 shadow-lg shadow-amber-500/35 border border-amber-100/80 backdrop-blur-md flex items-center gap-1.5 transition-all duration-300 opacity-0 -translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 pointer-events-none">
+                      <Trophy className="w-3.5 h-3.5" />
+                      Winner
                     </div>
-                  </>
-                )}
+                  )}
+
+                  {/* Featured Badge */}
+                  {project.featured && (
+                    <div className="absolute top-3 left-3 px-1.5 py-1.5 rounded-full text-xs font-semibold flex items-center backdrop-blur-md border border-white/10">
+                      <Star className="w-3 h-3 fill-yellow-400 stroke-yellow-400" />
+                    </div>
+                  )}
+                </div>
               </div>
 
               {/* Content Area */}
@@ -272,8 +282,8 @@ export function ProjectsSection() {
                       key={j}
                       className={`px-3 py-1 rounded-full text-xs font-medium transition-all duration-300 hover:scale-105 ${
                         isDark
-                          ? "bg-slate-800 text-gray-300 hover:bg-slate-700"
-                          : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                          ? "bg-white/10 text-gray-300 hover:bg-white/15"
+                          : "bg-white/55 text-gray-700 hover:bg-white/75"
                       }`}
                     >
                       {tag}
@@ -283,8 +293,8 @@ export function ProjectsSection() {
                     <span
                       className={`px-3 py-1 rounded-full text-xs font-medium ${
                         isDark
-                          ? "bg-slate-800 text-cyan-400"
-                          : "bg-cyan-50 text-cyan-600"
+                          ? "bg-white/10 text-cyan-300"
+                          : "bg-white/55 text-cyan-700"
                       }`}
                     >
                       +{project.tags.length - 3}
@@ -295,15 +305,15 @@ export function ProjectsSection() {
                 {/* Action Links */}
                 <div
                   className={`flex items-center gap-3 pt-4 border-t ${
-                    isDark ? "border-slate-800" : "border-gray-100"
+                    isDark ? "border-white/10" : "border-slate-200/70"
                   }`}
                 >
                   <a
                     href={project.github}
                     className={`p-2.5 rounded-xl transition-all duration-300 hover:scale-110 hover:-rotate-6 ${
                       isDark
-                        ? "bg-slate-800 text-gray-400 hover:text-white hover:bg-slate-700"
-                        : "bg-gray-100 text-gray-600 hover:text-gray-900 hover:bg-gray-200"
+                        ? "bg-white/8 text-gray-300 hover:text-white hover:bg-white/14"
+                        : "bg-white/50 text-gray-600 hover:text-gray-900 hover:bg-white/75"
                     }`}
                     target="_blank"
                     title="View Code"
@@ -314,8 +324,8 @@ export function ProjectsSection() {
                     href={project.demo}
                     className={`p-2.5 rounded-xl transition-all duration-300 hover:scale-110 hover:rotate-6 ${
                       isDark
-                        ? "bg-slate-800 text-gray-400 hover:text-white hover:bg-slate-700"
-                        : "bg-gray-100 text-gray-600 hover:text-gray-900 hover:bg-gray-200"
+                        ? "bg-white/8 text-gray-300 hover:text-white hover:bg-white/14"
+                        : "bg-white/50 text-gray-600 hover:text-gray-900 hover:bg-white/75"
                     }`}
                     target="_blank"
                     title="Live Demo"

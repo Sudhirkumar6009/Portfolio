@@ -1,133 +1,70 @@
 "use client";
-import { useState, useEffect } from "react";
+
 import { useTheme } from "../context/ThemeContext";
 import { ExternalLink, Github, Star, ArrowUpRight, Trophy } from "lucide-react";
 
 export function ProjectsSection() {
-  const shuffle_rn_projects = [
-    "/assets/shuffle_rn_1.png",
-    "/assets/shuffle_rn_2.png",
-    "/assets/shuffle_rn_3.png",
-  ];
-  const shuffle_globe = [
-    "/assets/globetrotter1.png",
-    "/assets/globetrotter2.png",
-  ];
-  const [globeImage, setGlobeImage] = useState(shuffle_globe[0]);
-  const [image, setImage] = useState(shuffle_rn_projects[0]);
-  useEffect(() => {
-    const randomShuffle = Math.floor(
-      Math.random() * shuffle_rn_projects.length,
-    );
-    setImage(shuffle_rn_projects[randomShuffle]);
-    const randomShuffle2 = Math.floor(Math.random() * shuffle_globe.length);
-    setGlobeImage(shuffle_globe[randomShuffle2]);
-  }, []);
-
   const { theme } = useTheme();
   const isDark = theme === "dark";
+
   const projects = [
     {
-      title: "StorageX",
+      title: "SafeSight",
       description:
-        "StorageX is a decentralized file storage platform that combines IPFS technology with blockchain-based authentication to deliver secure, censorship-resistant data storage",
-      tags: ["TypeScript", "Web3Auth", "IPFS", "MetaMask", "Node.js"],
-      image: `${
-        isDark ? "/assets/storagex_dark.png" : "/assets/storagex_light.png"
-      }`,
-      github: "https://github.com/Sudhirkumar6009/StorageX",
-      demo: "https://storage-x-47xm.vercel.app/",
-      details:
-        "https://github.com/Sudhirkumar6009/StorageX/blob/main/README.md",
+        "AI-powered violence detection platform using Computer Vision. Achieved 95%+ classification accuracy. IBM SkillsBuild AI Innovation Challenge 2026 Winner.",
+      tags: ["React", "FastAPI", "Python", "PostgreSQL", "MongoDB"],
+      highlights: ["95%+ Accuracy", "IBM Winner", "Computer Vision"],
+      github: "https://github.com/Sudhirkumar6009",
+      demo: "https://github.com/Sudhirkumar6009",
       featured: true,
-      Live: true,
+      winner: true,
+    },
+    {
+      title: "NexusMCP",
+      description:
+        "Natural-language multi-agent orchestration platform capable of executing workflows across GitHub, Jira, Slack and Google Sheets.",
+      tags: ["AI Planning", "Tool Calling", "Agentic Architecture"],
+      highlights: ["Multi-Agent", "Workflow Automation", "NLP"],
+      github: "https://github.com/Sudhirkumar6009",
+      demo: "https://github.com/Sudhirkumar6009",
+      featured: true,
+      winner: false,
+    },
+    {
+      title: "MindMapAI",
+      description:
+        "Transforms GitHub repositories into interactive knowledge graphs using Gemini-powered agents.",
+      tags: ["Graph Visualization", "LLMs", "Knowledge Extraction"],
+      highlights: ["Gemini API", "Knowledge Graph", "Repo Analysis"],
+      github: "https://github.com/Sudhirkumar6009",
+      demo: "https://github.com/Sudhirkumar6009",
+      featured: true,
+      winner: false,
     },
     {
       title: "StorageX",
       description:
-        "StorageX is a decentralized file storage platform that combines IPFS technology with blockchain-based authentication to deliver secure, censorship-resistant data storage",
+        "Decentralized secure file storage using IPFS, Web3Auth and blockchain-based access control.",
       tags: ["TypeScript", "Web3Auth", "IPFS", "MetaMask", "Node.js"],
-      image: `${
-        isDark ? "/assets/storagex_dark.png" : "/assets/storagex_light.png"
-      }`,
+      highlights: ["Web3", "Authentication", "Decentralized Storage"],
       github: "https://github.com/Sudhirkumar6009/StorageX",
       demo: "https://storage-x-47xm.vercel.app/",
-      details:
-        "https://github.com/Sudhirkumar6009/StorageX/blob/main/README.md",
       featured: true,
-      Live: true,
+      winner: false,
     },
     {
-      title: "LibraXpert",
+      title: "INDRA",
       description:
-        "LibraXpert is an advanced Cross-platform Library Management System designed for educational institutions, public libraries, and private collections",
-      tags: ["React", "Node.js", "MongoDB", "Express", "Tailwind"],
-      image: "/assets/mockup_libraXpert.png",
-      github: "https://github.com/Sudhirkumar6009/LibraXpert",
-      demo: "https://libraxpert.vercel.app/",
-      details:
-        "https://github.com/Sudhirkumar6009/LibraXpert/blob/main/README.md",
+        "Climate Intelligence Platform combining AI, spatial data and environmental datasets for prediction and visualization.",
+      tags: ["Machine Learning", "Geospatial Data", "Forecasting"],
+      highlights: ["ML Models", "Spatial Analysis", "Climate AI"],
+      github: "https://github.com/Sudhirkumar6009",
+      demo: "https://github.com/Sudhirkumar6009",
       featured: true,
-      Live: true,
-    },
-    {
-      title: "StackIt Q/A Forum",
-      description:
-        "Odoo'25 Virtual round project — StackIt is a minimal Q/A forum platform built with modern web technologies, designed for clean, community-driven question-and-answer interactions.",
-      tags: ["Express.js", "React", "Tailwind", "MongoDB"],
-      image: "/assets/stackIt.png",
-      github: "https://github.com/Sudhirkumar6009/StackIt_Odoo",
-      demo: "https://stackit-new.vercel.app/",
-      details:
-        "https://github.com/Sudhirkumar6009/StackIt_Odoo/blob/main/README.md",
-      featured: true,
-      Live: true,
-    },
-    {
-      title: "React Native Projects",
-      description:
-        "Completed an exciting 50-day React Native journey by building real, functional apps like a Clock App, NewsActive, To-Do App, and Weather Cast. Each app showcases clean UI, smooth performance, and even comes with downloadable APKs for instant Android testing.",
-      tags: [
-        "React Native",
-        "Firebase",
-        "Android SDK, ADB",
-        "Javascript",
-        "Android Studio",
-        "NewsAPI",
-        "",
-      ],
-      image: image,
-      github: "https://github.com/Sudhirkumar6009/React-Native-Projects",
-      demo: "https://github.com/Sudhirkumar6009/React-Native-Projects/tree/main/Applications",
-      details:
-        "https://github.com/Sudhirkumar6009/React-Native-Projects/blob/main/README.md",
-      featured: true,
-      Live: true,
-    },
-    {
-      title: "GlobeTrotter",
-      description:
-        "Odoo Hackathon'25 Finalist Project — GlobeTrotter is a clean and intuitive travel-management system designed to simplify trip planning with smart organization. Although it didn’t win, the project demonstrates strong problem-solving, UI design, and practical feature implementation",
-      tags: [
-        "GEMINI AI",
-        "Node.js",
-        "MongoDB",
-        "React",
-        "UI/UX",
-        "TypeScript",
-        "Tailwind CSS",
-      ],
-      image: `${
-        isDark ? "/assets/globetrotter2.png" : "/assets/globetrotter1.png"
-      }`,
-      github: "https://github.com/Sudhirkumar6009/GlobeTrotter",
-      demo: "https://github.com/Sudhirkumar6009/GlobeTrotter",
-      details:
-        "https://github.com/Sudhirkumar6009/GlobeTrotter/blob/main/README.md",
-      featured: true,
-      Live: true,
+      winner: false,
     },
   ];
+
   return (
     <section
       id="projects"
@@ -137,17 +74,17 @@ export function ProjectsSection() {
           : "bg-gradient-to-b from-gray-50 via-white to-gray-50"
       }`}
     >
-      {/* Static Background */}
+      {/* Background */}
       <div className="absolute inset-0 pointer-events-none">
         <div
           className={`absolute top-0 left-1/4 w-80 h-80 rounded-full ${
-            isDark ? "bg-cyan-500/5" : "bg-cyan-300/10"
+            isDark ? "bg-green-500/5" : "bg-green-300/10"
           }`}
           style={{ filter: "blur(80px)" }}
         />
         <div
           className={`absolute bottom-0 right-1/4 w-80 h-80 rounded-full ${
-            isDark ? "bg-blue-500/5" : "bg-blue-300/10"
+            isDark ? "bg-emerald-500/5" : "bg-emerald-300/10"
           }`}
           style={{ filter: "blur(80px)" }}
         />
@@ -164,8 +101,8 @@ export function ProjectsSection() {
             <span
               className={
                 isDark
-                  ? "text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400"
-                  : "text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-blue-600"
+                  ? "text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-400"
+                  : "text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-emerald-600"
               }
             >
               Projects
@@ -176,91 +113,55 @@ export function ProjectsSection() {
               isDark ? "text-gray-400" : "text-gray-600"
             }`}
           >
-            A collection of projects showcasing my skills and passion for
-            building digital experiences.
+            AI-powered, production-grade applications built to solve real problems.
           </p>
         </div>
 
-        {/* Projects Grid - 2 rows x 3 columns */}
+        {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, i) => (
             <div
               key={i}
               className={`group relative rounded-3xl overflow-hidden border backdrop-blur-xl transition-all duration-500 hover:-translate-y-1.5 hover:scale-[1.01] ${
-                i === 0
+                project.winner
                   ? isDark
                     ? "border-amber-300/70 bg-transparent shadow-[0_22px_55px_-20px_rgba(251,191,36,0.45)]"
                     : "border-amber-400/70 bg-transparent shadow-[0_22px_50px_-20px_rgba(217,119,6,0.32)]"
                   : isDark
-                    ? "border-blue-300/45 bg-transparent shadow-[0_16px_45px_-24px_rgba(0,0,0,0.9)] hover:border-blue-300/70"
-                    : "border-blue-300/65 bg-transparent shadow-[0_18px_40px_-24px_rgba(15,23,42,0.2)] hover:border-blue-400/70"
+                  ? "border-green-500/20 bg-transparent shadow-[0_16px_45px_-24px_rgba(0,0,0,0.9)] hover:border-green-400/40"
+                  : "border-green-300/40 bg-transparent shadow-[0_18px_40px_-24px_rgba(15,23,42,0.15)] hover:border-green-400/60"
               }`}
               style={{ animationDelay: `${i * 100}ms` }}
             >
-              <div className="absolute inset-0 pointer-events-none bg-transparent" />
-              <div className="absolute inset-0 pointer-events-none bg-transparent" />
+              {/* Top accent line */}
               <div
                 className={`absolute inset-x-0 top-0 h-[2px] pointer-events-none ${
-                  i === 0 ? "bg-amber-300/90" : "bg-blue-400/90"
+                  project.winner ? "bg-amber-300/90" : "bg-green-500/60"
                 }`}
               />
 
-              {/* Mockup Preview Area */}
-              <div className="relative h-64 overflow-hidden border-b border-white/8">
-                <div className="absolute inset-0">
-                  <div className="absolute inset-0 bg-transparent" />
-
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="relative z-10 w-full h-full object-contain transition-transform duration-500 group-hover:scale-[1.015]"
-                    onError={(e) => {
-                      (e.target as HTMLImageElement).style.display = "none";
-                    }}
-                  />
-
-                  <div className="absolute bottom-1 left-1/2 -translate-x-1/2 h-8 w-[76%] blur-xl rounded-full bg-transparent" />
-
-                  {project.Live && (
-                    <a
-                      href={project.demo}
-                      className={`absolute right-3 bottom-3 z-20 px-3.5 py-2 rounded-full text-sm font-semibold flex items-center gap-1.5 transition-all duration-300 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 bg-cyan-500 hover:bg-cyan-600 shadow-lg ${
-                        isDark ? "text-black" : "text-white"
-                      }`}
-                      target="_blank"
-                    >
-                      {project.title == "React Native Projects" ||
-                      project.title == "GlobeTrotter"
-                        ? "View"
-                        : "Live"}
-                      <ArrowUpRight className="w-4 h-4" />
-                    </a>
+              {/* Content Area */}
+              <div className="p-6 pt-8">
+                {/* Badges */}
+                <div className="flex items-center gap-2 mb-4">
+                  {project.winner && (
+                    <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold bg-amber-300 text-amber-950 border border-amber-100/80">
+                      <Trophy className="w-3 h-3" /> IBM Winner
+                    </span>
                   )}
-
-                  {i === 0 && (
-                    <div className="absolute top-3 right-3 z-30 px-3.5 py-1.5 rounded-full text-[11px] font-semibold tracking-[0.08em] uppercase bg-amber-300 text-amber-950 shadow-lg shadow-amber-500/35 border border-amber-100/80 backdrop-blur-md flex items-center gap-1.5 transition-all duration-300 opacity-0 -translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 pointer-events-none">
-                      <Trophy className="w-3.5 h-3.5" />
-                      Winner
-                    </div>
-                  )}
-
-                  {/* Featured Badge */}
                   {project.featured && (
-                    <div className="absolute top-3 left-3 px-1.5 py-1.5 rounded-full text-xs font-semibold flex items-center backdrop-blur-md border border-white/10">
+                    <span className="inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs">
                       <Star className="w-3 h-3 fill-yellow-400 stroke-yellow-400" />
-                    </div>
+                    </span>
                   )}
                 </div>
-              </div>
 
-              {/* Content Area */}
-              <div className="p-6">
                 {/* Title */}
                 <h3
                   className={`text-xl font-bold mb-2 transition-colors duration-300 ${
                     isDark
-                      ? "text-white group-hover:text-cyan-400"
-                      : "text-gray-900 group-hover:text-cyan-600"
+                      ? "text-white group-hover:text-green-400"
+                      : "text-gray-900 group-hover:text-green-600"
                   }`}
                 >
                   {project.title}
@@ -268,12 +169,28 @@ export function ProjectsSection() {
 
                 {/* Description */}
                 <p
-                  className={`mb-4 text-sm leading-relaxed line-clamp-2 ${
+                  className={`mb-4 text-sm leading-relaxed ${
                     isDark ? "text-gray-400" : "text-gray-600"
                   }`}
                 >
                   {project.description}
                 </p>
+
+                {/* Highlight pills */}
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {project.highlights.map((h, j) => (
+                    <span
+                      key={j}
+                      className={`px-2.5 py-1 rounded-full text-xs font-medium ${
+                        isDark
+                          ? "bg-green-500/10 text-green-400 border border-green-500/20"
+                          : "bg-green-50 text-green-700 border border-green-200"
+                      }`}
+                    >
+                      {h}
+                    </span>
+                  ))}
+                </div>
 
                 {/* Tags */}
                 <div className="flex flex-wrap gap-2 mb-5">
@@ -293,8 +210,8 @@ export function ProjectsSection() {
                     <span
                       className={`px-3 py-1 rounded-full text-xs font-medium ${
                         isDark
-                          ? "bg-white/10 text-cyan-300"
-                          : "bg-white/55 text-cyan-700"
+                          ? "bg-white/10 text-green-300"
+                          : "bg-white/55 text-green-700"
                       }`}
                     >
                       +{project.tags.length - 3}
@@ -333,11 +250,11 @@ export function ProjectsSection() {
                     <ExternalLink className="w-5 h-5" />
                   </a>
                   <a
-                    href={project.details}
+                    href={project.github}
                     className={`ml-auto text-sm font-semibold flex items-center gap-1.5 transition-all duration-300 group/link ${
                       isDark
-                        ? "text-cyan-400 hover:text-cyan-300"
-                        : "text-cyan-600 hover:text-cyan-700"
+                        ? "text-green-400 hover:text-green-300"
+                        : "text-green-600 hover:text-green-700"
                     }`}
                     target="_blank"
                   >
@@ -347,14 +264,13 @@ export function ProjectsSection() {
                 </div>
               </div>
 
-              {/* Animated Border Glow on Hover */}
+              {/* Hover glow */}
               <div
                 className={`absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none`}
                 style={{
-                  background: `linear-gradient(135deg, transparent, transparent)`,
                   boxShadow: isDark
-                    ? `inset 0 0 0 1px rgba(6, 182, 212, 0.3), 0 0 40px -10px rgba(6, 182, 212, 0.3)`
-                    : `inset 0 0 0 1px rgba(6, 182, 212, 0.2), 0 0 40px -10px rgba(6, 182, 212, 0.2)`,
+                    ? `inset 0 0 0 1px rgba(34, 197, 94, 0.2), 0 0 40px -10px rgba(34, 197, 94, 0.2)`
+                    : `inset 0 0 0 1px rgba(34, 197, 94, 0.15), 0 0 40px -10px rgba(34, 197, 94, 0.15)`,
                 }}
               />
             </div>
@@ -362,20 +278,16 @@ export function ProjectsSection() {
         </div>
 
         {/* View All Button */}
-        <div className="text-center mt-16">
+        <div className="text-center mt-16 pb-16">
           <a href="https://github.com/Sudhirkumar6009" target="_blank">
             <button
-              className={`cursor-pointer group px-8 py-4 rounded-2xl font-semibold transition-all duration-300 hover:scale-105 active:scale-95 relative overflow-hidden ${
-                isDark
-                  ? "bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40"
-                  : "bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40"
-              }`}
+              className={`cursor-pointer group px-8 py-4 rounded-2xl font-semibold transition-all duration-300 hover:scale-105 active:scale-95 relative overflow-hidden bg-gradient-to-r from-green-500 to-emerald-500 text-white shadow-lg shadow-green-500/25 hover:shadow-green-500/40`}
             >
               <span className="relative z-10 flex items-center gap-1">
-                View All Projects
+                View All Projects on GitHub
                 <ArrowUpRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
               </span>
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute inset-0 bg-gradient-to-r from-emerald-500 to-green-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </button>
           </a>
         </div>

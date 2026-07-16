@@ -7,7 +7,6 @@ import CountUp from "@/components/CountUp";
 import RotatingText from "@/components/RotatingText";
 import MetaBalls from "@/components/MetaBalls";
 
-// Reduced particles for better performance
 const particles = [
   { x: 10, y: 20, delay: 0, duration: 8 },
   { x: 30, y: 60, delay: 1, duration: 9 },
@@ -21,7 +20,7 @@ export function HeroSection() {
   const { theme } = useTheme();
   const isDark = theme === "dark";
 
-  const scrollToProjects = () => {
+  const scrollToAbout = () => {
     document.getElementById("about")?.scrollIntoView({ behavior: "smooth" });
   };
 
@@ -31,38 +30,34 @@ export function HeroSection() {
       className={`relative min-h-screen flex items-center justify-center overflow-hidden ${
         isDark
           ? "bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950"
-          : "bg-gradient-to-br from-gray-50 via-white to-cyan-50"
+          : "bg-gradient-to-br from-gray-50 via-white to-green-50"
       }`}
     >
-      {/* Optimized Background - Using CSS animations instead of Framer Motion */}
+      {/* Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* Static gradient orbs with CSS animation */}
         <div
           className={`absolute top-1/4 -left-20 w-80 h-80 rounded-full opacity-40 animate-float-slow ${
-            isDark ? "bg-cyan-500/30" : "bg-cyan-300/40"
+            isDark ? "bg-green-500/20" : "bg-green-300/40"
           }`}
           style={{ filter: "blur(60px)" }}
         />
         <div
           className={`absolute bottom-1/4 -right-20 w-80 h-80 rounded-full opacity-40 animate-float-slower ${
-            isDark ? "bg-blue-500/30" : "bg-blue-300/40"
+            isDark ? "bg-emerald-500/20" : "bg-emerald-300/40"
           }`}
           style={{ filter: "blur(60px)" }}
         />
-
-        {/* Grid Pattern - Static */}
+        {/* Grid Pattern */}
         <div
-          className={`absolute inset-0 bg-[linear-gradient(rgba(6,182,212,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(6,182,212,0.03)_1px,transparent_1px)] bg-[size:100px_100px] ${
+          className={`absolute inset-0 bg-[linear-gradient(rgba(34,197,94,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(34,197,94,0.04)_1px,transparent_1px)] bg-[size:100px_100px] ${
             isDark ? "opacity-100" : "opacity-50"
           }`}
         />
-
-        {/* Reduced particles with CSS animation */}
         {particles.map((particle, i) => (
           <div
             key={i}
             className={`absolute w-1 h-1 rounded-full animate-float-up ${
-              isDark ? "bg-cyan-400/60" : "bg-cyan-500/60"
+              isDark ? "bg-green-400/60" : "bg-green-500/60"
             }`}
             style={{
               left: `${particle.x}%`,
@@ -76,25 +71,45 @@ export function HeroSection() {
 
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-20 items-center min-h-[10vh]">
-          {/* Left Side - Content */}
+          {/* Left Side */}
           <div className="text-center lg:text-left animate-fade-in">
-            {/* Main Heading */}
-            <h1 className="text-xl sm:text-4xl md:text-5xl lg:text-5xl font-bold mb-10 leading-tight">
-              <br />
+            {/* Badge */}
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border mb-6 text-sm font-medium"
+              style={{
+                background: isDark ? "rgba(34,197,94,0.08)" : "rgba(34,197,94,0.1)",
+                borderColor: isDark ? "rgba(34,197,94,0.25)" : "rgba(34,197,94,0.35)",
+                color: isDark ? "#4ade80" : "#16a34a",
+              }}
+            >
+              <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+              Available for opportunities
+            </div>
+
+            <h1 className="text-xl sm:text-4xl md:text-5xl lg:text-5xl font-bold mb-4 leading-tight">
+              <span className={`block text-sm sm:text-base font-normal mb-2 ${isDark ? "text-gray-400" : "text-gray-500"}`}>
+                Building AI Agents, Intelligent Systems &amp;
+              </span>
+              <span className={`block ${isDark ? "text-white" : "text-gray-900"}`}>
+                Modern Full-Stack
+              </span>
               <span
                 className={`inline-block ${
                   isDark
-                    ? "text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-cyan-400"
-                    : "text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 via-blue-600 to-cyan-600"
+                    ? "text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-emerald-400 to-green-400"
+                    : "text-transparent bg-clip-text bg-gradient-to-r from-green-600 via-emerald-600 to-green-600"
                 }`}
               >
-                Sudhirkumar Kuchara
+                Applications.
               </span>
             </h1>
 
+            <p className={`text-base sm:text-lg mb-6 leading-relaxed max-w-lg ${isDark ? "text-gray-400" : "text-gray-600"}`}>
+              I'm <strong className={isDark ? "text-white" : "text-gray-900"}>Sudhirkumar Kuchara</strong>, a Full-Stack Developer focused on AI-powered applications, multi-agent systems, and scalable backend architecture.
+            </p>
+
             {/* Subtitle with RotatingText */}
             <p
-              className={`text-xl sm:text-2xl md:text-3xl font-light mb-8 flex items-center gap-2 justify-center lg:justify-start flex-wrap ${
+              className={`text-xl sm:text-2xl font-light mb-8 flex items-center gap-2 justify-center lg:justify-start flex-wrap ${
                 isDark ? "text-gray-300" : "text-gray-600"
               }`}
             >
@@ -102,14 +117,15 @@ export function HeroSection() {
               <RotatingText
                 texts={[
                   "Full-Stack Developer",
-                  "UI/UX Designer",
-                  "Web3 Enthusiast",
-                  "Problem Solver",
+                  "AI Systems Builder",
+                  "Hackathon Winner",
+                  "Open Source Dev",
+                  "Agentic AI Engineer",
                 ]}
                 mainClassName={`px-3 py-1 rounded-lg font-medium ${
                   isDark
-                    ? "bg-gradient-to-r from-cyan-500 to-blue-500 text-white"
-                    : "bg-gradient-to-r from-cyan-400 to-blue-400 text-white"
+                    ? "bg-gradient-to-r from-green-500 to-emerald-500 text-white"
+                    : "bg-gradient-to-r from-green-500 to-emerald-500 text-white"
                 }`}
                 staggerFrom="last"
                 initial={{ y: "100%", opacity: 0 }}
@@ -128,20 +144,36 @@ export function HeroSection() {
               <InteractiveHoverButton
                 onClick={() =>
                   document
-                    .getElementById("contact")
+                    .getElementById("projects")
                     ?.scrollIntoView({ behavior: "smooth" })
                 }
               >
-                Connect with Me
+                View Projects
               </InteractiveHoverButton>
 
-              <InteractiveHoverButton onClick={scrollToProjects}>
-                My Projects
-              </InteractiveHoverButton>
+              <a href="https://github.com/Sudhirkumar6009" target="_blank" rel="noopener noreferrer">
+                <InteractiveHoverButton>
+                  GitHub
+                </InteractiveHoverButton>
+              </a>
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-2 gap-6 max-w-sm mx-auto lg:mx-0">
+            <div className="grid grid-cols-3 gap-4 max-w-sm mx-auto lg:mx-0">
+              <div className="flex flex-col items-center">
+                <CountUp
+                  from={0}
+                  to={25}
+                  separator=","
+                  direction="up"
+                  suffix="+"
+                  duration={1}
+                  className={`text-2xl sm:text-3xl font-bold mb-1 ${
+                    isDark ? "text-green-400" : "text-green-600"
+                  }`}
+                />
+                <p className="text-xs text-gray-500 text-center">Public Projects</p>
+              </div>
               <div className="flex flex-col items-center">
                 <CountUp
                   from={0}
@@ -151,25 +183,24 @@ export function HeroSection() {
                   suffix="+"
                   duration={1}
                   className={`text-2xl sm:text-3xl font-bold mb-1 ${
-                    isDark ? "text-cyan-400" : "text-cyan-600"
+                    isDark ? "text-green-400" : "text-green-600"
                   }`}
                 />
-                <p className="text-sm text-gray-500">Years Tech Experience</p>
+                <p className="text-xs text-gray-500 text-center">Hackathons</p>
               </div>
-
               <div className="flex flex-col items-center">
                 <CountUp
                   from={0}
-                  to={20}
+                  to={1}
                   separator=","
-                  suffix="+"
                   direction="up"
+                  suffix="🏆"
                   duration={1}
                   className={`text-2xl sm:text-3xl font-bold mb-1 ${
-                    isDark ? "text-cyan-400" : "text-cyan-600"
+                    isDark ? "text-green-400" : "text-green-600"
                   }`}
                 />
-                <p className="text-sm text-gray-500">Projects</p>
+                <p className="text-xs text-gray-500 text-center">IBM Winner</p>
               </div>
             </div>
           </div>
@@ -178,8 +209,8 @@ export function HeroSection() {
           <div className="hidden lg:flex items-center justify-center">
             <div className="relative w-[420px] h-[420px] rounded-full overflow-hidden">
               <MetaBalls
-                color={isDark ? "#22d3ee" : "#5bc0eeff"}
-                cursorBallColor={isDark ? "#3b82f6" : "#4e80edff"}
+                color={isDark ? "#4ade80" : "#22c55e"}
+                cursorBallColor={isDark ? "#16a34a" : "#15803d"}
                 cursorBallSize={2}
                 ballCount={15}
                 animationSize={30}
@@ -196,11 +227,11 @@ export function HeroSection() {
 
       {/* Scroll Indicator */}
       <button
-        onClick={scrollToProjects}
+        onClick={scrollToAbout}
         className={`absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce ${
           isDark
-            ? "text-gray-400 hover:text-cyan-400"
-            : "text-gray-500 hover:text-cyan-600"
+            ? "text-gray-400 hover:text-green-400"
+            : "text-gray-500 hover:text-green-600"
         } transition-colors`}
       >
         <span className="text-sm">Scroll Down</span>

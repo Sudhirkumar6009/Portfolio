@@ -1,36 +1,28 @@
 "use client";
 
 import { useTheme } from "../context/ThemeContext";
-import { User, Code, Palette, Database, Globe } from "lucide-react";
+import { Code, Database, Palette, Globe, Brain } from "lucide-react";
+
 const skills = [
   {
     icon: Code,
-    name: "UI Craft",
-    items: ["React", "Next.js", "TypeScript", "Vite"],
+    name: "Frontend",
+    items: ["React", "Next.js", "TypeScript", "Tailwind"],
   },
   {
     icon: Database,
-    name: "Server Logic",
-    items: [
-      "Node.js",
-      "MongoDB",
-      "REST APIs",
-      "IPFS",
-      "Firebase",
-      "Express.js",
-      "OAuth 2.0",
-      "Redis",
-    ],
+    name: "Backend",
+    items: ["Node.js", "FastAPI", "MongoDB", "PostgreSQL", "Redis", "Express.js"],
   },
   {
-    icon: Palette,
-    name: "Visual Design",
-    items: ["Layout Design", "Tailwind CSS", "UI/UX"],
+    icon: Brain,
+    name: "AI & Agents",
+    items: ["Gemini API", "LLMs", "Multi-Agent Systems", "Computer Vision"],
   },
   {
     icon: Globe,
-    name: "Deployment Flow",
-    items: ["Docker", "Github", "AWS", "Vercel", "Render"],
+    name: "DevOps & Web3",
+    items: ["Docker", "GitHub", "IPFS", "Web3Auth", "Vercel"],
   },
 ];
 
@@ -40,8 +32,7 @@ const experiences = [
     to_year: "Present",
     title: "Bachelor of Information Technology",
     company: "Government Technological University",
-    description:
-      "Pursueing degree in Information Technology, currently in 6th semester",
+    description: "Pursuing BE in Information Technology, currently in 6th semester",
   },
   {
     from_year: "Sep 2021",
@@ -71,17 +62,17 @@ export function AboutSection() {
           : "bg-gradient-to-b from-white via-gray-50 to-white"
       }`}
     >
-      {/* Static Background */}
+      {/* Background */}
       <div className="absolute inset-0 pointer-events-none">
         <div
           className={`absolute top-1/3 -right-32 w-96 h-96 rounded-full ${
-            isDark ? "bg-cyan-500/5" : "bg-cyan-300/10"
+            isDark ? "bg-green-500/5" : "bg-green-300/10"
           }`}
           style={{ filter: "blur(80px)" }}
         />
         <div
           className={`absolute bottom-1/3 -left-32 w-96 h-96 rounded-full ${
-            isDark ? "bg-blue-500/5" : "bg-blue-300/10"
+            isDark ? "bg-emerald-500/5" : "bg-emerald-300/10"
           }`}
           style={{ filter: "blur(80px)" }}
         />
@@ -95,8 +86,8 @@ export function AboutSection() {
             <span
               className={
                 isDark
-                  ? "text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400"
-                  : "text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-blue-600"
+                  ? "text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-400"
+                  : "text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-emerald-600"
               }
             >
               About{" "}
@@ -119,8 +110,8 @@ export function AboutSection() {
                 <div
                   className={`w-20 h-20 rounded-2xl flex items-center justify-center text-4xl ${
                     isDark
-                      ? "bg-gradient-to-br from-cyan-500/20 to-blue-500/20 border border-cyan-500/20"
-                      : "bg-gradient-to-br from-cyan-50 to-blue-50 border border-cyan-200"
+                      ? "bg-gradient-to-br from-green-500/20 to-emerald-500/20 border border-green-500/20"
+                      : "bg-gradient-to-br from-green-50 to-emerald-50 border border-green-200"
                   }`}
                 >
                   <img
@@ -136,9 +127,14 @@ export function AboutSection() {
                   >
                     Sudhirkumar Kuchara
                   </h3>
-                  <p className={isDark ? "text-cyan-400" : "text-cyan-600"}>
-                    Full-Stack Developer
+                  <p className={isDark ? "text-green-400" : "text-green-600"}>
+                    Full-Stack Developer · AI & Agentic Systems
                   </p>
+                  <div className={`mt-2 inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold ${
+                    isDark ? "bg-amber-500/15 text-amber-400 border border-amber-500/20" : "bg-amber-50 text-amber-700 border border-amber-200"
+                  }`}>
+                    🏆 IBM SkillsBuild AI Innovation Challenge 2026 — 1st Place
+                  </div>
                 </div>
               </div>
               <p
@@ -146,9 +142,7 @@ export function AboutSection() {
                   isDark ? "text-gray-400" : "text-gray-600"
                 }`}
               >
-                I'm a passionate developer with expertise in building modern web
-                applications. I love turning complex problems into simple,
-                beautiful solutions that users love.
+                I'm a BE Information Technology student who loves solving real engineering problems — not cloning existing apps. I'm passionate about AI, backend systems, distributed architecture, and developer tools. Recently won the IBM SkillsBuild AI Innovation Challenge 2026 with SafeSight, an AI-powered violence detection platform.
               </p>
             </div>
 
@@ -159,13 +153,13 @@ export function AboutSection() {
                   key={i}
                   className={`p-4 rounded-xl border transition-all duration-200 hover:-translate-y-1 ${
                     isDark
-                      ? "bg-slate-900/50 border-slate-800 hover:border-cyan-500/30"
-                      : "bg-white border-gray-200 hover:border-cyan-500/30"
+                      ? "bg-slate-900/50 border-slate-800 hover:border-green-500/30"
+                      : "bg-white border-gray-200 hover:border-green-500/30"
                   }`}
                 >
                   <skill.icon
                     className={`w-6 h-6 mb-2 ${
-                      isDark ? "text-cyan-400" : "text-cyan-600"
+                      isDark ? "text-green-400" : "text-green-600"
                     }`}
                   />
                   <h4
@@ -194,7 +188,7 @@ export function AboutSection() {
             </div>
           </div>
 
-          {/* Right Column - Experience */}
+          {/* Right Column - Education */}
           <div>
             <h3
               className={`text-2xl font-bold mb-6 ml-20 hover:translate-y-1 hover:translate-x-5 hover:scale-110 transition-all duration-300 ${
@@ -208,18 +202,17 @@ export function AboutSection() {
                 <div
                   key={i}
                   className={`relative pl-8 pb-6 border-l-2 pb-10 m-12 ${
-                    isDark ? "border-cyan-500" : "border-cyan-500"
+                    isDark ? "border-green-500" : "border-green-500"
                   }`}
                 >
-                  {/* Timeline dot */}
                   <div
                     className={
-                      "absolute -left-2 top-0 w-4 h-4 rounded-full bg-cyan-500 border-2 border-cyan-500"
+                      "absolute -left-2 top-0 w-4 h-4 rounded-full bg-green-500 border-2 border-green-500"
                     }
                   />
                   <span
                     className={`text-sm italic ${
-                      isDark ? "text-cyan-400" : "text-cyan-600"
+                      isDark ? "text-green-400" : "text-green-600"
                     }`}
                   >
                     {exp.to_year == null

@@ -14,9 +14,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Portfolio | Full-Stack Developer",
+  title: "Sudhirkumar Kuchara | Full-Stack & AI Developer",
   description:
-    "Personal portfolio showcasing my projects and skills as a full-stack developer",
+    "Portfolio of Sudhirkumar Kuchara — Full-Stack Developer, AI & Agentic Systems Builder, IBM SkillsBuild AI Innovation Challenge 2026 Winner",
 };
 
 export default function RootLayout({

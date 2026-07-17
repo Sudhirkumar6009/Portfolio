@@ -1,245 +1,141 @@
 "use client";
 
 import { useTheme } from "../context/ThemeContext";
-import { Code, Database, Palette, Globe, Brain } from "lucide-react";
+import { MapPin, Trophy, Rocket, Brain, Code2, GitBranch } from "lucide-react";
 
-const skills = [
-  {
-    icon: Code,
-    name: "Frontend",
-    items: ["React", "Next.js", "TypeScript", "Tailwind"],
-  },
-  {
-    icon: Database,
-    name: "Backend",
-    items: ["Node.js", "FastAPI", "MongoDB", "PostgreSQL", "Redis", "Express.js"],
-  },
-  {
-    icon: Brain,
-    name: "AI & Agents",
-    items: ["Gemini API", "LLMs", "Multi-Agent Systems", "Computer Vision"],
-  },
-  {
-    icon: Globe,
-    name: "DevOps & Web3",
-    items: ["Docker", "GitHub", "IPFS", "Web3Auth", "Vercel"],
-  },
-];
-
-const experiences = [
-  {
-    from_year: "July 2024",
-    to_year: "Present",
-    title: "Bachelor of Information Technology",
-    company: "Government Technological University",
-    description: "Pursuing BE in Information Technology, currently in 6th semester",
-  },
-  {
-    from_year: "Sep 2021",
-    to_year: "Jun 2024",
-    title: "Diploma in Information Technology",
-    company: "Government Technological University",
-    description: "9.05 CGPA",
-  },
-  {
-    from_year: "May 2021",
-    title: "GSEB Board Examination",
-    company: "Axay Highschool",
-    description: "89.33 Percentage",
-  },
+const highlights = [
+  { icon: Trophy, label: "IBM SkillsBuild AI Innovation Challenge 2026", value: "1st Place" },
+  { icon: Rocket, label: "Public Projects", value: "25+" },
+  { icon: Brain, label: "AI & Multi-Agent Systems", value: "Specialist" },
+  { icon: Code2, label: "Full-Stack", value: "MERN · PERN · FastAPI" },
+  { icon: GitBranch, label: "Open Source", value: "Active Contributor" },
+  { icon: Trophy, label: "National Hackathon Finalist", value: "Multiple" },
 ];
 
 export function AboutSection() {
   const { theme } = useTheme();
   const isDark = theme === "dark";
 
+  const bg = isDark ? "#0a0a0a" : "#f8f8f8";
+  const cardBg = isDark ? "rgba(255,255,255,0.03)" : "rgba(0,0,0,0.03)";
+  const cardBorder = isDark ? "rgba(255,255,255,0.08)" : "rgba(0,0,0,0.08)";
+  const textPrimary = isDark ? "#ffffff" : "#0a0a0a";
+  const textMuted = isDark ? "#9ca3af" : "#6b7280";
+  const accent = isDark ? "#a5b4fc" : "#4f46e5";
+
   return (
     <section
       id="about"
-      className={`py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden ${
-        isDark
-          ? "bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950"
-          : "bg-gradient-to-b from-white via-gray-50 to-white"
-      }`}
+      className="py-28 px-4 sm:px-6 lg:px-8"
+      style={{ background: bg }}
     >
-      {/* Background */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div
-          className={`absolute top-1/3 -right-32 w-96 h-96 rounded-full ${
-            isDark ? "bg-green-500/5" : "bg-green-300/10"
-          }`}
-          style={{ filter: "blur(80px)" }}
-        />
-        <div
-          className={`absolute bottom-1/3 -left-32 w-96 h-96 rounded-full ${
-            isDark ? "bg-emerald-500/5" : "bg-emerald-300/10"
-          }`}
-          style={{ filter: "blur(80px)" }}
-        />
-      </div>
+      <div className="max-w-6xl mx-auto">
 
-      <div className="relative z-10 max-w-7xl mx-auto">
-        {/* Section Header */}
-        <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl sm:text-5xl font-bold mb-4">
-            <p className="mt-3" />
-            <span
-              className={
-                isDark
-                  ? "text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-400"
-                  : "text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-emerald-600"
-              }
-            >
-              About{" "}
-            </span>
-            <span className={isDark ? "text-white" : "text-gray-900"}>me</span>
+        {/* Section heading */}
+        <div className="text-center mb-16">
+          <h2 className="text-4xl sm:text-5xl font-bold mb-4" style={{ color: textPrimary }}>
+            About Me
           </h2>
+          <p className="text-base max-w-xl mx-auto" style={{ color: textMuted }}>
+            Engineer. Builder. Problem Solver.
+          </p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-start">
-          {/* Left Column - Profile */}
-          <div>
+
+          {/* Left — profile card + bio */}
+          <div className="space-y-6">
             <div
-              className={`p-8 rounded-3xl border mb-8 ${
-                isDark
-                  ? "bg-slate-900/50 border-slate-800"
-                  : "bg-white border-gray-200 shadow-lg"
-              }`}
+              className="p-8 rounded-2xl border"
+              style={{ background: cardBg, borderColor: cardBorder }}
             >
-              <div className="flex items-start gap-6 mb-6">
+              {/* Avatar + name */}
+              <div className="flex items-center gap-5 mb-6">
                 <div
-                  className={`w-20 h-20 rounded-2xl flex items-center justify-center text-4xl ${
-                    isDark
-                      ? "bg-gradient-to-br from-green-500/20 to-emerald-500/20 border border-green-500/20"
-                      : "bg-gradient-to-br from-green-50 to-emerald-50 border border-green-200"
-                  }`}
+                  className="w-20 h-20 rounded-2xl overflow-hidden flex-shrink-0 border"
+                  style={{ borderColor: cardBorder }}
                 >
                   <img
-                    src={"/assets/me.png"}
-                    className="inset-10 w-full h-full object-cover rounded-2xl"
+                    src="/assets/me.png"
+                    alt="Sudhirkumar"
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).style.display = "none";
+                    }}
                   />
                 </div>
                 <div>
-                  <h3
-                    className={`text-2xl font-bold mb-1 ${
-                      isDark ? "text-white" : "text-gray-900"
-                    }`}
-                  >
+                  <h3 className="text-xl font-bold mb-0.5" style={{ color: textPrimary }}>
                     Sudhirkumar Kuchara
                   </h3>
-                  <p className={isDark ? "text-green-400" : "text-green-600"}>
+                  <p className="text-sm mb-2" style={{ color: accent }}>
                     Full-Stack Developer · AI & Agentic Systems
                   </p>
-                  <div className={`mt-2 inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold ${
-                    isDark ? "bg-amber-500/15 text-amber-400 border border-amber-500/20" : "bg-amber-50 text-amber-700 border border-amber-200"
-                  }`}>
-                    🏆 IBM SkillsBuild AI Innovation Challenge 2026 — 1st Place
+                  <div className="flex items-center gap-1.5 text-xs" style={{ color: textMuted }}>
+                    <MapPin className="w-3.5 h-3.5" />
+                    Ahmedabad, India
                   </div>
                 </div>
               </div>
-              <p
-                className={`leading-relaxed ${
-                  isDark ? "text-gray-400" : "text-gray-600"
-                }`}
-              >
-                I'm a BE Information Technology student who loves solving real engineering problems — not cloning existing apps. I'm passionate about AI, backend systems, distributed architecture, and developer tools. Recently won the IBM SkillsBuild AI Innovation Challenge 2026 with SafeSight, an AI-powered violence detection platform.
+
+              {/* Bio */}
+              <p className="text-sm leading-relaxed mb-4" style={{ color: textMuted }}>
+                I'm a BE Information Technology student who loves solving real engineering problems —
+                not cloning existing apps. Passionate about AI, backend systems, distributed
+                architecture, and developer tools.
+              </p>
+              <p className="text-sm leading-relaxed" style={{ color: textMuted }}>
+                Recently won the <span style={{ color: accent, fontWeight: 600 }}>IBM SkillsBuild AI Innovation Challenge 2026</span> with
+                SafeSight — an AI-powered violence detection platform achieving 95%+ classification
+                accuracy. I enjoy turning ambitious ideas into production-ready software.
               </p>
             </div>
 
-            {/* Skills */}
-            <div className="grid grid-cols-2 gap-4">
-              {skills.map((skill, i) => (
-                <div
-                  key={i}
-                  className={`p-4 rounded-xl border transition-all duration-200 hover:-translate-y-1 ${
-                    isDark
-                      ? "bg-slate-900/50 border-slate-800 hover:border-green-500/30"
-                      : "bg-white border-gray-200 hover:border-green-500/30"
-                  }`}
-                >
-                  <skill.icon
-                    className={`w-6 h-6 mb-2 ${
-                      isDark ? "text-green-400" : "text-green-600"
-                    }`}
-                  />
-                  <h4
-                    className={`font-semibold mb-2 ${
-                      isDark ? "text-white" : "text-gray-900"
-                    }`}
-                  >
-                    {skill.name}
-                  </h4>
-                  <div className="flex flex-wrap gap-1">
-                    {skill.items.map((item, j) => (
-                      <span
-                        key={j}
-                        className={`text-xs px-2 py-1 rounded ${
-                          isDark
-                            ? "bg-slate-800 text-gray-400"
-                            : "bg-gray-100 text-gray-600"
-                        }`}
-                      >
-                        {item}
-                      </span>
-                    ))}
+            {/* Quick facts */}
+            <div
+              className="p-6 rounded-2xl border"
+              style={{ background: cardBg, borderColor: cardBorder }}
+            >
+              <h4 className="text-sm font-semibold uppercase tracking-widest mb-4" style={{ color: textMuted }}>
+                Quick Facts
+              </h4>
+              <div className="space-y-3">
+                {[
+                  ["🎓", "BE Information Technology — GTU (6th Semester)"],
+                  ["💼", "PHP Intern @ Patel Web Solution"],
+                  ["🏆", "IBM SkillsBuild AI Innovation Challenge 2026 Winner"],
+                  ["🚀", "25+ public repositories on GitHub"],
+                  ["🤖", "Specialised in AI Agents & Multi-Agent Systems"],
+                ].map(([emoji, text], i) => (
+                  <div key={i} className="flex items-start gap-3 text-sm" style={{ color: textMuted }}>
+                    <span className="text-base flex-shrink-0">{emoji}</span>
+                    <span>{text}</span>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
 
-          {/* Right Column - Education */}
+          {/* Right — highlights grid */}
           <div>
-            <h3
-              className={`text-2xl font-bold mb-6 ml-20 hover:translate-y-1 hover:translate-x-5 hover:scale-110 transition-all duration-300 ${
-                isDark ? "text-white" : "text-gray-900"
-              }`}
-            >
-              Education
-            </h3>
-            <div className="space-y-6">
-              {experiences.map((exp, i) => (
+            <h4 className="text-sm font-semibold uppercase tracking-widest mb-6" style={{ color: textMuted }}>
+              Highlights
+            </h4>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {highlights.map((h, i) => (
                 <div
                   key={i}
-                  className={`relative pl-8 pb-6 border-l-2 pb-10 m-12 ${
-                    isDark ? "border-green-500" : "border-green-500"
-                  }`}
+                  className="p-5 rounded-2xl border transition-all duration-200 hover:-translate-y-1"
+                  style={{ background: cardBg, borderColor: cardBorder }}
                 >
                   <div
-                    className={
-                      "absolute -left-2 top-0 w-4 h-4 rounded-full bg-green-500 border-2 border-green-500"
-                    }
-                  />
-                  <span
-                    className={`text-sm italic ${
-                      isDark ? "text-green-400" : "text-green-600"
-                    }`}
+                    className="w-9 h-9 rounded-xl flex items-center justify-center mb-3"
+                    style={{ background: "rgba(99,102,241,0.15)" }}
                   >
-                    {exp.to_year == null
-                      ? exp.from_year
-                      : `${exp.from_year} — ${exp.to_year}`}
-                  </span>
-                  <h4
-                    className={`text-lg font-bold mt-1 ${
-                      isDark ? "text-white" : "text-gray-900"
-                    }`}
-                  >
-                    {exp.title}
-                  </h4>
-                  <p
-                    className={`text-sm ${
-                      isDark ? "text-gray-400" : "text-gray-600"
-                    }`}
-                  >
-                    {exp.company}
-                  </p>
-                  <p
-                    className={`text-sm mt-2 ${
-                      isDark ? "text-gray-500" : "text-gray-500"
-                    }`}
-                  >
-                    {exp.description}
-                  </p>
+                    <h.icon className="w-4.5 h-4.5" style={{ color: accent }} />
+                  </div>
+                  <p className="text-xs mb-1" style={{ color: textMuted }}>{h.label}</p>
+                  <p className="text-sm font-semibold" style={{ color: textPrimary }}>{h.value}</p>
                 </div>
               ))}
             </div>

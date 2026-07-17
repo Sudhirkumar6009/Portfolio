@@ -1,37 +1,52 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "../context/ThemeContext";
 import { useState, useEffect, useCallback, useRef } from "react";
-import { Menu, X, Moon, Sun } from "lucide-react";
+import {
+  Briefcase,
+  Code2,
+  User,
+  GraduationCap,
+  Wrench,
+  Mail,
+  Github,
+  Linkedin,
+  Download,
+  Sun,
+  Moon,
+  Menu,
+  X,
+} from "lucide-react";
 
-const navLinks = [
-  { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
-  { label: "Projects", href: "#projects" },
-  { label: "Achievements", href: "#achievements" },
-  { label: "Contact", href: "#contact" },
+const navItems = [
+  { icon: Briefcase, href: "#projects", label: "Projects" },
+  { icon: Code2, href: "#techstack", label: "Skills" },
+  { icon: User, href: "#about", label: "About" },
+  { icon: GraduationCap, href: "#education", label: "Education" },
+  { icon: Wrench, href: "#experience", label: "Experience" },
+  { icon: Mail, href: "#contact", label: "Contact" },
+  { icon: Github, href: "https://github.com/Sudhirkumar6009", label: "GitHub", external: true },
+  { icon: Linkedin, href: "https://www.linkedin.com/in/sudhirkumar-kuchara", label: "LinkedIn", external: true },
+  { icon: Download, href: "#", label: "Resume" },
 ];
 
 export function Header() {
   const { theme, toggleTheme } = useTheme();
   const isDark = theme === "dark";
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
+  const [mobileOpen, setMobileOpen] = useState(false);
   const ticking = useRef(false);
 
   const handleScroll = useCallback(() => {
     if (!ticking.current) {
       requestAnimationFrame(() => {
-        setIsScrolled(window.scrollY > 50);
-        const sections = ["home", "about", "projects", "achievements", "contact"];
-        for (const section of sections) {
-          const element = document.getElementById(section);
-          if (element) {
-            const rect = element.getBoundingClientRect();
-            if (rect.top <= 150 && rect.bottom >= 150) {
-              setActiveSection(section);
+        const sections = ["home", "about", "projects", "education", "techstack", "experience", "achievements", "contact"];
+        for (const s of sections) {
+          const el = document.getElementById(s);
+          if (el) {
+            const rect = el.getBoundingClientRect();
+            if (rect.top <= 120 && rect.bottom >= 120) {
+              setActiveSection(s);
               break;
             }
           }
@@ -47,150 +62,129 @@ export function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [handleScroll]);
 
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+  const scrollTo = (href: string, external?: boolean) => {
+    if (external) {
+      window.open(href, "_blank");
+      return;
     }
-    setMobileMenuOpen(false);
+    const el = document.querySelector(href);
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+    setMobileOpen(false);
   };
 
   return (
     <>
-      <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 will-change-transform ${
-          isScrolled
-            ? `mt-3 mx-4 sm:mx-8 md:mx-12 lg:mx-[80px] rounded-3xl ${
-                isDark
-                  ? "bg-slate-950/90 backdrop-blur-md border border-green-500/20"
-                  : "bg-white/90 backdrop-blur-md border border-green-500/30 shadow-lg"
-              }`
-            : "bg-transparent"
-        }`}
-      >
-        <nav className="max-w-5xl mx-auto px-2 sm:px-6 lg:px-2">
-          <div className="flex items-center justify-between h-17">
-            {/* Logo */}
-            <a
-              href="#home"
-              onClick={(e) => {
-                e.preventDefault();
-                scrollToSection("#home");
-              }}
-              className="flex items-center gap-1 group hover:scale-105 transition-transform duration-200"
-            >
-              <div
-                className={`w-10 h-10 m-2 rounded-xl flex items-center justify-center ${
-                  isDark
-                    ? "bg-gradient-to-br from-green-500 to-emerald-600"
-                    : "bg-gradient-to-br from-green-400 to-emerald-500"
+      {/* Pill Navbar — centered at top */}
+      <header className="fixed top-5 left-1/2 -translate-x-1/2 z-50">
+        {/* Desktop pill */}
+        <div
+          className="hidden md:flex items-center gap-1 px-4 py-2.5 rounded-full border"
+          style={{
+            background: isDark ? "rgba(10,10,10,0.85)" : "rgba(255,255,255,0.85)",
+            borderColor: isDark ? "rgba(255,255,255,0.12)" : "rgba(0,0,0,0.12)",
+            backdropFilter: "blur(16px)",
+            boxShadow: isDark
+              ? "0 4px 24px rgba(0,0,0,0.6)"
+              : "0 4px 24px rgba(0,0,0,0.12)",
+          }}
+        >
+          {navItems.map((item, i) => {
+            const isActive = !item.external && activeSection === item.href.slice(1);
+            return (
+              <button
+                key={i}
+                onClick={() => scrollTo(item.href, item.external)}
+                title={item.label}
+                className={`relative p-2.5 rounded-full transition-all duration-200 hover:scale-110 group ${
+                  isActive
+                    ? "bg-[#4f46e5] text-white"
+                    : isDark
+                    ? "text-gray-400 hover:text-white hover:bg-white/10"
+                    : "text-gray-500 hover:text-gray-900 hover:bg-black/8"
                 }`}
               >
-                <span className="text-white font-bold text-lg">S</span>
-              </div>
-              <span
-                className={`font-bold text-xl ${
-                  isDark ? "text-white" : "text-gray-900"
-                }`}
-              >
-                Sudhir
-              </span>
-            </a>
-
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center gap-1">
-              {navLinks.map((link) => (
-                <button
-                  key={link.href}
-                  onClick={() => scrollToSection(link.href)}
-                  className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 hover:scale-105 active:scale-95 ${
-                    activeSection === link.href.slice(1)
-                      ? isDark
-                        ? "text-green-400 bg-green-500/10"
-                        : "text-green-600 bg-green-500/10"
-                      : isDark
-                      ? "text-gray-300 hover:text-white"
-                      : "text-gray-600 hover:text-gray-900"
-                  }`}
+                <item.icon className="w-4 h-4" />
+                {/* Tooltip */}
+                <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-xs px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap"
+                  style={{
+                    background: isDark ? "#1e1e1e" : "#111",
+                    color: "#fff",
+                  }}
                 >
-                  {link.label}
-                </button>
-              ))}
-            </div>
-
-            {/* Theme Toggle & Mobile Menu */}
-            <div className="flex items-center gap-3">
-              <button
-                onClick={toggleTheme}
-                className={`p-3 rounded-xl transition-all duration-200 hover:scale-110 active:scale-95 ${
-                  isDark
-                    ? "bg-slate-800 text-green-400 hover:bg-slate-700"
-                    : "bg-gray-100 text-green-600 hover:bg-gray-200"
-                }`}
-              >
-                {isDark ? (
-                  <Sun className="w-5 h-5" />
-                ) : (
-                  <Moon className="w-5 h-5" />
-                )}
+                  {item.label}
+                </span>
               </button>
+            );
+          })}
 
-              <button
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className={`md:hidden p-3 rounded-xl transition-all duration-200 active:scale-95 ${
-                  isDark
-                    ? "bg-slate-800 text-white hover:bg-slate-700"
-                    : "bg-gray-100 text-gray-900 hover:bg-gray-200"
-                }`}
-              >
-                {mobileMenuOpen ? (
-                  <X className="w-5 h-5" />
-                ) : (
-                  <Menu className="w-5 h-5" />
-                )}
-              </button>
-            </div>
-          </div>
-        </nav>
+          {/* Divider */}
+          <div className={`w-px h-5 mx-1 ${isDark ? "bg-white/15" : "bg-black/15"}`} />
+
+          {/* Theme toggle */}
+          <button
+            onClick={toggleTheme}
+            title="Toggle theme"
+            className={`p-2.5 rounded-full transition-all duration-200 hover:scale-110 ${
+              isDark
+                ? "text-gray-400 hover:text-white hover:bg-white/10"
+                : "text-gray-500 hover:text-gray-900 hover:bg-black/8"
+            }`}
+          >
+            {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+          </button>
+        </div>
+
+        {/* Mobile hamburger */}
+        <button
+          className="md:hidden p-3 rounded-full border"
+          style={{
+            background: isDark ? "rgba(10,10,10,0.9)" : "rgba(255,255,255,0.9)",
+            borderColor: isDark ? "rgba(255,255,255,0.12)" : "rgba(0,0,0,0.12)",
+          }}
+          onClick={() => setMobileOpen(!mobileOpen)}
+        >
+          {mobileOpen
+            ? <X className={`w-5 h-5 ${isDark ? "text-white" : "text-gray-900"}`} />
+            : <Menu className={`w-5 h-5 ${isDark ? "text-white" : "text-gray-900"}`} />
+          }
+        </button>
       </header>
 
-      {/* Mobile Menu */}
-      <AnimatePresence>
-        {mobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.15 }}
-            className={`fixed left-4 right-4 z-40 md:hidden rounded-2xl ${
-              isDark
-                ? "bg-slate-950/95 backdrop-blur-md border border-green-500/20"
-                : "bg-white/95 backdrop-blur-md border border-green-500/30"
-            }`}
-            style={{ top: isScrolled ? "calc(80px + 30px)" : "90px" }}
-          >
-            <div className="px-4 py-4 space-y-2">
-              {navLinks.map((link) => (
-                <button
-                  key={link.href}
-                  onClick={() => scrollToSection(link.href)}
-                  className={`block w-full text-left px-4 py-3 rounded-xl font-medium transition-colors duration-150 ${
-                    activeSection === link.href.slice(1)
-                      ? isDark
-                        ? "bg-green-500/10 text-green-400"
-                        : "bg-green-500/10 text-green-600"
-                      : isDark
-                      ? "text-gray-300 hover:bg-slate-800"
-                      : "text-gray-600 hover:bg-gray-100"
-                  }`}
-                >
-                  {link.label}
-                </button>
-              ))}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {/* Mobile dropdown */}
+      {mobileOpen && (
+        <div
+          className="fixed top-20 left-1/2 -translate-x-1/2 z-40 md:hidden rounded-2xl border px-4 py-4 w-64"
+          style={{
+            background: isDark ? "rgba(10,10,10,0.97)" : "rgba(255,255,255,0.97)",
+            borderColor: isDark ? "rgba(255,255,255,0.12)" : "rgba(0,0,0,0.12)",
+            backdropFilter: "blur(16px)",
+          }}
+        >
+          <div className="grid grid-cols-3 gap-3">
+            {navItems.map((item, i) => (
+              <button
+                key={i}
+                onClick={() => scrollTo(item.href, item.external)}
+                className={`flex flex-col items-center gap-1.5 p-3 rounded-xl transition-all duration-200 ${
+                  isDark ? "hover:bg-white/10 text-gray-300" : "hover:bg-black/5 text-gray-700"
+                }`}
+              >
+                <item.icon className="w-5 h-5" />
+                <span className="text-xs">{item.label}</span>
+              </button>
+            ))}
+            <button
+              onClick={toggleTheme}
+              className={`flex flex-col items-center gap-1.5 p-3 rounded-xl transition-all duration-200 ${
+                isDark ? "hover:bg-white/10 text-gray-300" : "hover:bg-black/5 text-gray-700"
+              }`}
+            >
+              {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+              <span className="text-xs">Theme</span>
+            </button>
+          </div>
+        </div>
+      )}
     </>
   );
 }

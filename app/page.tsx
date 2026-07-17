@@ -2,10 +2,10 @@
 
 import { Header } from "./components/Header";
 import { HeroSection } from "./components/HeroSection";
-import { HighlightsSection } from "./components/HighlightsSection";
 import { AboutSection } from "./components/AboutSection";
-import { ProjectsSection } from "./components/ProjectsSection";
+import { EducationSection } from "./components/EducationSection";
 import { TechStackSection } from "./components/TechStackSection";
+import { ProjectsSection } from "./components/ProjectsSection";
 import { AchievementsSection } from "./components/AchievementsSection";
 import { ExperienceSection } from "./components/ExperienceSection";
 import { ContactSection } from "./components/ContactSection";
@@ -16,10 +16,10 @@ export default function Home() {
     <main className="min-h-screen">
       <Header />
       <HeroSection />
-      <HighlightsSection />
       <AboutSection />
-      <ProjectsSection />
+      <EducationSection />
       <TechStackSection />
+      <ProjectsSection />
       <AchievementsSection />
       <ExperienceSection />
       <ContactSection />

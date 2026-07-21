@@ -62,7 +62,7 @@ export function EducationSection() {
           {/* Vertical line */}
           <div
             className="absolute top-0 bottom-0 w-px"
-            style={{ left: 20, background: lineColor }}
+            style={{ left: 10, background: lineColor }}
           />
 
           <div className="space-y-8">
@@ -78,7 +78,7 @@ export function EducationSection() {
                 {/* Timeline dot */}
                 <div
                   className="absolute left-0 top-6 z-10"
-                  style={{ width: 40, height: 40 }}
+                  style={{ width: 20, height: 20 }}
                 >
                   {edu.current ? (
                     /* Pulsing ring for current study */
@@ -91,28 +91,9 @@ export function EducationSection() {
                           height: 40,
                           border: `1.5px solid ${accent}`,
                           borderRadius: 0,
-                          opacity: 0.5,
-                        }}
-                        animate={{
-                          scale: [1, 1.55, 1],
-                          opacity: [0.5, 0, 0.5],
-                        }}
-                        transition={{
-                          duration: 2,
-                          repeat: Infinity,
-                          ease: "easeOut",
-                        }}
-                      />
-                      <motion.div
-                        className="absolute"
-                        style={{
-                          width: 40,
-                          height: 40,
-                          border: `1.5px solid ${accent}`,
-                          borderRadius: 0,
                           opacity: 0.3,
                         }}
-                        animate={{ scale: [1, 1.9, 1], opacity: [0.3, 0, 0.3] }}
+                        animate={{ scale: [1, 1, 1], opacity: [0.3, 0, 0.3] }}
                         transition={{
                           duration: 2,
                           repeat: Infinity,
@@ -141,7 +122,7 @@ export function EducationSection() {
                             ? "rgba(34,197,94,0.4)"
                             : "rgba(34,197,94,0.5)",
                           borderRadius: 0,
-                          border: `1.5px solid ${accent}`,
+                          border: accent,
                         }}
                       />
                     </div>

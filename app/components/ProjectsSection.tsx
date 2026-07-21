@@ -133,10 +133,10 @@ function ProjectModal({
   onClose: () => void;
   isDark: boolean;
 }) {
-  const bg          = isDark ? "#111111" : "#ffffff";
-  const border      = isDark ? "rgba(255,255,255,0.1)" : "rgba(0,0,0,0.1)";
+  const bg = isDark ? "#111111" : "#ffffff";
+  const border = isDark ? "rgba(255,255,255,0.1)" : "rgba(0,0,0,0.1)";
   const textPrimary = isDark ? "#ffffff" : "#0a0a0a";
-  const textMuted   = isDark ? "#9ca3af" : "#6b7280";
+  const textMuted = isDark ? "#9ca3af" : "#6b7280";
 
   return (
     <motion.div
@@ -159,40 +159,68 @@ function ProjectModal({
         <button
           onClick={onClose}
           className="absolute top-4 right-4 z-10 p-2 transition-all hover:scale-110"
-          style={{ background: isDark ? "rgba(255,255,255,0.08)" : "rgba(0,0,0,0.06)", borderRadius: 0 }}
+          style={{
+            background: isDark ? "rgba(255,255,255,0.08)" : "rgba(0,0,0,0.06)",
+            borderRadius: 0,
+          }}
         >
           <X className="w-4 h-4" style={{ color: textMuted }} />
         </button>
 
-        <div className="w-full h-52 overflow-hidden" style={{ background: isDark ? "#1a1a1a" : "#f0f0f0" }}>
+        <div
+          className="w-full h-52 overflow-hidden"
+          style={{ background: isDark ? "#1a1a1a" : "#f0f0f0" }}
+        >
           <img
             src={project.image}
             alt={project.title}
             className="w-full h-full object-cover"
-            onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}
+            onError={(e) => {
+              (e.target as HTMLImageElement).style.display = "none";
+            }}
           />
         </div>
 
         <div className="p-7">
           <div className="flex items-center gap-3 mb-2 flex-wrap">
-            <h3 className="text-2xl font-bold" style={{ color: textPrimary }}>{project.title}</h3>
+            <h3 className="text-2xl font-bold" style={{ color: textPrimary }}>
+              {project.title}
+            </h3>
             {project.winner && (
-              <span className="px-3 py-0.5 text-xs font-semibold bg-amber-300 text-amber-950" style={{ borderRadius: 0 }}>
+              <span
+                className="px-3 py-0.5 text-xs font-semibold bg-amber-300 text-amber-950"
+                style={{ borderRadius: 0 }}
+              >
                 🏆 IBM Winner
               </span>
             )}
           </div>
 
-          <p className="text-sm leading-relaxed mb-6" style={{ color: textMuted }}>{project.description}</p>
+          <p
+            className="text-sm leading-relaxed mb-6"
+            style={{ color: textMuted }}
+          >
+            {project.description}
+          </p>
 
           <div className="mb-6">
-            <h4 className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: textMuted }}>
+            <h4
+              className="text-xs font-semibold uppercase tracking-widest mb-3"
+              style={{ color: textMuted }}
+            >
               Key Learnings
             </h4>
             <ul className="space-y-2">
               {project.learned.map((item, i) => (
-                <li key={i} className="flex items-start gap-2 text-sm" style={{ color: textMuted }}>
-                  <span className="mt-1.5 w-1.5 h-1.5 flex-shrink-0" style={{ background: "#16a34a", display: "inline-block" }} />
+                <li
+                  key={i}
+                  className="flex items-start gap-2 text-sm"
+                  style={{ color: textMuted }}
+                >
+                  <span
+                    className="mt-1.5 w-1.5 h-1.5 flex-shrink-0"
+                    style={{ background: "#16a34a", display: "inline-block" }}
+                  />
                   {item}
                 </li>
               ))}
@@ -222,7 +250,14 @@ function ProjectModal({
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 px-5 py-2.5 text-sm font-semibold transition-all hover:scale-105 border"
-              style={{ background: isDark ? "rgba(255,255,255,0.06)" : "rgba(0,0,0,0.05)", borderColor: border, color: textPrimary, borderRadius: 0 }}
+              style={{
+                background: isDark
+                  ? "rgba(255,255,255,0.06)"
+                  : "rgba(0,0,0,0.05)",
+                borderColor: border,
+                color: textPrimary,
+                borderRadius: 0,
+              }}
             >
               <Github className="w-4 h-4" /> View Code
             </a>
@@ -231,7 +266,10 @@ function ProjectModal({
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 px-5 py-2.5 text-sm font-semibold text-white transition-all hover:scale-105 hover:brightness-110"
-              style={{ background: "linear-gradient(135deg,#16a34a,#15803d)", borderRadius: 0 }}
+              style={{
+                background: "linear-gradient(135deg,#16a34a,#15803d)",
+                borderRadius: 0,
+              }}
             >
               <ExternalLink className="w-4 h-4" /> Live Demo
             </a>
@@ -247,37 +285,45 @@ export function ProjectsSection() {
   const isDark = theme === "dark";
   const [selected, setSelected] = useState<Project | null>(null);
 
-  const bg          = isDark ? "#0a0a0a" : "#f8f8f8";
+  const bg = isDark ? "#0a0a0a" : "#f8f8f8";
   const textPrimary = isDark ? "#ffffff" : "#0a0a0a";
-  const textMuted   = isDark ? "#9ca3af" : "#6b7280";
-  const cardBorder  = isDark ? "rgba(255,255,255,0.09)" : "rgba(0,0,0,0.09)";
+  const textMuted = isDark ? "#9ca3af" : "#6b7280";
+  const cardBorder = isDark ? "rgba(255,255,255,0.09)" : "rgba(0,0,0,0.09)";
 
   return (
     <>
-      <section id="projects" className="py-28 px-4 sm:px-6 lg:px-8" style={{ background: bg }}>
+      <section
+        id="projects"
+        className="py-28 px-4 sm:px-6 lg:px-8"
+        style={{ background: bg }}
+      >
         <div className="max-w-6xl mx-auto">
-
           <div className="text-center mb-16">
-            <h2 className="text-4xl sm:text-5xl font-bold mb-4" style={{ color: textPrimary }}>
+            <h2
+              className="text-4xl sm:text-5xl font-bold mb-4"
+              style={{ color: textPrimary }}
+            >
               Featured Projects
             </h2>
-            <p className="text-base max-w-xl mx-auto" style={{ color: textMuted }}>
+            <p
+              className="text-base max-w-xl mx-auto"
+              style={{ color: textMuted }}
+            >
               Hover to preview — click for full details.
             </p>
           </div>
 
-          {/* 3×2 grid — 3 cols, 2 rows */}
-          <div
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-0 border-l border-t"
-            style={{ borderColor: cardBorder }}
-          >
+          {/* 2×3 grid — 2 cols, 3 rows for the six featured projects */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
             {projects.map((project, i) => (
               <motion.div
                 key={i}
-                className="group relative overflow-hidden cursor-pointer border-r border-b cursor-target"
+                className="group relative ml-1 overflow-hidden cursor-pointer border cursor-target"
                 style={{
-                  borderColor: project.winner ? "rgba(251,191,36,0.4)" : cardBorder,
-                  aspectRatio: "4 / 3",
+                  borderColor: project.winner
+                    ? "rgba(255, 201, 64, 0.4)"
+                    : cardBorder,
+                  aspectRatio: "16 / 10",
                 }}
                 initial={{ opacity: 0, scale: 0.96 }}
                 whileInView={{ opacity: 1, scale: 1 }}
@@ -296,7 +342,9 @@ export function ProjectsSection() {
                     src={project.image}
                     alt={project.title}
                     className="w-full h-full object-cover opacity-40 group-hover:opacity-20 transition-opacity duration-300"
-                    onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).style.display = "none";
+                    }}
                   />
                   <div
                     className="absolute inset-0"
@@ -312,14 +360,27 @@ export function ProjectsSection() {
                 <div className="relative z-10 p-6 flex flex-col h-full justify-between group-hover:opacity-0 transition-opacity duration-300">
                   <div>
                     <div className="flex items-center gap-2 mb-2 flex-wrap">
-                      <h3 className="text-lg font-bold" style={{ color: textPrimary }}>{project.title}</h3>
+                      <h3
+                        className="text-lg font-bold"
+                        style={{ color: textPrimary }}
+                      >
+                        {project.title}
+                      </h3>
                       {project.winner && (
-                        <span className="px-2 py-0.5 text-xs font-semibold bg-amber-300 text-amber-950" style={{ borderRadius: 0 }}>
+                        <span
+                          className="px-2 py-0.5 text-xs font-semibold bg-amber-300 text-amber-950"
+                          style={{ borderRadius: 0 }}
+                        >
                           🏆
                         </span>
                       )}
                     </div>
-                    <p className="text-sm leading-relaxed" style={{ color: textMuted }}>{project.shortDesc}</p>
+                    <p
+                      className="text-sm leading-relaxed"
+                      style={{ color: textMuted }}
+                    >
+                      {project.shortDesc}
+                    </p>
                   </div>
                   <div className="flex flex-wrap gap-1.5">
                     {project.tags.slice(0, 3).map((tag, j) => (
@@ -353,8 +414,18 @@ export function ProjectsSection() {
                   // We use CSS group-hover via inline style trick below
                 >
                   <div>
-                    <h3 className="text-base font-bold mb-1" style={{ color: textPrimary }}>{project.title}</h3>
-                    <p className="text-xs leading-relaxed mb-3" style={{ color: textMuted }}>{project.shortDesc}</p>
+                    <h3
+                      className="text-base font-bold mb-1"
+                      style={{ color: textPrimary }}
+                    >
+                      {project.title}
+                    </h3>
+                    <p
+                      className="text-xs leading-relaxed mb-3"
+                      style={{ color: textMuted }}
+                    >
+                      {project.shortDesc}
+                    </p>
                     <div className="flex flex-wrap gap-1.5 mb-3">
                       {project.tags.map((tag, j) => (
                         <span
@@ -371,7 +442,10 @@ export function ProjectsSection() {
                         </span>
                       ))}
                     </div>
-                    <div className="flex items-center gap-1 text-xs font-semibold" style={{ color: "#16a34a" }}>
+                    <div
+                      className="flex items-center gap-1 text-xs font-semibold"
+                      style={{ color: "#16a34a" }}
+                    >
                       <ArrowUpRight className="w-3.5 h-3.5" /> Click for details
                     </div>
                   </div>
@@ -394,8 +468,18 @@ export function ProjectsSection() {
                   }}
                 >
                   <div>
-                    <h3 className="text-base font-bold mb-1" style={{ color: textPrimary }}>{project.title}</h3>
-                    <p className="text-xs leading-relaxed mb-3" style={{ color: textMuted }}>{project.shortDesc}</p>
+                    <h3
+                      className="text-base font-bold mb-1"
+                      style={{ color: textPrimary }}
+                    >
+                      {project.title}
+                    </h3>
+                    <p
+                      className="text-xs leading-relaxed mb-3"
+                      style={{ color: textMuted }}
+                    >
+                      {project.shortDesc}
+                    </p>
                     <div className="flex flex-wrap gap-1.5 mb-3">
                       {project.tags.map((tag, j) => (
                         <span
@@ -412,7 +496,10 @@ export function ProjectsSection() {
                         </span>
                       ))}
                     </div>
-                    <div className="flex items-center gap-1 text-xs font-semibold" style={{ color: "#16a34a" }}>
+                    <div
+                      className="flex items-center gap-1 text-xs font-semibold"
+                      style={{ color: "#16a34a" }}
+                    >
                       <ArrowUpRight className="w-3.5 h-3.5" /> Click for details
                     </div>
                   </div>
@@ -427,7 +514,10 @@ export function ProjectsSection() {
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-8 py-3.5 font-semibold text-white transition-all hover:scale-105 hover:brightness-110"
-              style={{ background: "linear-gradient(135deg,#16a34a,#15803d)", borderRadius: 0 }}
+              style={{
+                background: "linear-gradient(135deg,#16a34a,#15803d)",
+                borderRadius: 0,
+              }}
             >
               View All on GitHub <ArrowUpRight className="w-4 h-4" />
             </a>
@@ -437,7 +527,11 @@ export function ProjectsSection() {
 
       <AnimatePresence>
         {selected && (
-          <ProjectModal project={selected} onClose={() => setSelected(null)} isDark={isDark} />
+          <ProjectModal
+            project={selected}
+            onClose={() => setSelected(null)}
+            isDark={isDark}
+          />
         )}
       </AnimatePresence>
     </>

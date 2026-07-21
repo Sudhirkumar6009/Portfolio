@@ -5,10 +5,20 @@ import { motion } from "framer-motion";
 
 const experiences = [
   {
+    title: "Java Development & Internship",
+    company: "TRL FutureX",
+    period: "Jun-2026 — Jul-2026",
+    type: "ONLINE",
+    description:
+      "Worked on Java Development including OOP-concepts, Java accent and Backend Development. Gained hands-on experience in building scalable applications.",
+    skills: ["Java", "Springboot"],
+    current: false,
+  },
+  {
     title: "PHP Technology Intern",
     company: "Patel Web Solution",
     period: "2023",
-    type: "Internship",
+    type: "OFFLINE",
     description:
       "Worked on PHP-based web applications — backend development, database management, and client-side integrations. Gained hands-on experience shipping real client projects.",
     skills: ["PHP", "MySQL", "HTML/CSS", "JavaScript"],
@@ -80,7 +90,6 @@ export function ExperienceSection() {
                         ? "rgba(22,163,74,0.5)"
                         : "rgba(22,163,74,0.6)",
                       borderRadius: 0,
-                      border: `1.5px solid ${accent}`,
                     }}
                   />
                 </div>

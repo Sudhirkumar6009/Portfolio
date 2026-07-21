@@ -107,7 +107,7 @@ function Tip({ label, isDark }: { label: string; isDark: boolean }) {
 }
 
 export function Header() {
-  const { theme, toggleTheme } = useTheme();
+  const { theme } = useTheme();
   const isDark = theme === "dark";
 
   const [activeSection, setActiveSection] = useState("home");
@@ -316,18 +316,6 @@ export function Header() {
             </button>
           ))}
 
-          {/* thin divider before theme */}
-          <div className="w-px h-4 mx-1.5" style={{ background: pillBdr }} />
-
-          {/* ── Theme toggle ── */}
-          <button onClick={toggleTheme} className={`${btnBase} ${btnIdle}`}>
-            {isDark ? (
-              <Sun className="w-[17px] h-[17px]" />
-            ) : (
-              <Moon className="w-[17px] h-[17px]" />
-            )}
-            <Tip label={isDark ? "Light Mode" : "Dark Mode"} isDark={isDark} />
-          </button>
         </nav>
       </header>
 
@@ -389,19 +377,6 @@ export function Header() {
                 {item.label}
               </button>
             ))}
-            <div className="h-px my-1" style={{ background: pillBdr }} />
-            <button
-              onClick={toggleTheme}
-              className="flex items-center gap-3 w-full px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-150"
-              style={{ color: isDark ? "#d1d5db" : "#374151" }}
-            >
-              {isDark ? (
-                <Sun className="w-4 h-4" />
-              ) : (
-                <Moon className="w-4 h-4" />
-              )}
-              {isDark ? "Light Mode" : "Dark Mode"}
-            </button>
           </div>
         </div>
       )}

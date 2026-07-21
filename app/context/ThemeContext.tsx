@@ -24,7 +24,9 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     setTheme("dark");
   }, []);
 
-  return <ThemeContext.Provider value={{ theme }}>{children}</ThemeContext.Provider>;
+  return (
+    <ThemeContext.Provider value={{ theme }}>{children}</ThemeContext.Provider>
+  );
 }
 
 export function useTheme() {

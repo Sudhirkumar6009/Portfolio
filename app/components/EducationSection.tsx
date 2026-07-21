@@ -1,31 +1,26 @@
 "use client";
 
 import { useTheme } from "../context/ThemeContext";
+import { motion } from "framer-motion";
 
 const education = [
   {
     period: "July 2024 — Present",
     degree: "Bachelor of Engineering — Information Technology",
-    institution: "Government Technological University, Ahmedabad, Gujarat",
+    institution: "Government Technological University, Ahmedabad",
     description:
-      "Currently in 6th semester, building expertise in software engineering, AI systems, distributed computing, and full-stack development. Active participant in national hackathons and open-source projects.",
+      "Currently in 6th semester. Building expertise in software engineering, AI systems, distributed computing, and full-stack development. Active in national hackathons and open-source projects.",
     grade: "Currently Pursuing",
+    current: true,
   },
   {
     period: "Sep 2021 — Jun 2024",
     degree: "Diploma in Information Technology",
-    institution: "Government Technological University, Ahmedabad, Gujarat",
+    institution: "Government Technological University, Ahmedabad",
     description:
-      "Completed a rigorous 3-year diploma program covering core computer science fundamentals, web technologies, database management, and software development practices.",
+      "3-year diploma covering core CS fundamentals, web technologies, database management, and software development practices.",
     grade: "9.05 CGPA",
-  },
-  {
-    period: "May 2021",
-    degree: "GSEB Board Examination",
-    institution: "Axay Highschool",
-    description:
-      "Completed secondary education with a strong foundation in Mathematics, Science, and Computer Studies, setting the stage for a career in technology.",
-    grade: "89.33%",
+    current: false,
   },
 ];
 
@@ -33,117 +28,181 @@ export function EducationSection() {
   const { theme } = useTheme();
   const isDark = theme === "dark";
 
-  const bg = isDark ? "#0a0a0a" : "#f5f5f5";
-  const cardBg = isDark ? "#111111" : "#ffffff";
-  const cardBorder = isDark ? "rgba(255,255,255,0.07)" : "rgba(0,0,0,0.07)";
+  const bg = isDark ? "#0a0a0a" : "#f8f8f8";
+  const cardBg = isDark ? "rgba(255,255,255,0.03)" : "#ffffff";
+  const cardBorder = isDark ? "rgba(255,255,255,0.08)" : "rgba(0,0,0,0.08)";
   const textPrimary = isDark ? "#ffffff" : "#0a0a0a";
   const textMuted = isDark ? "#9ca3af" : "#6b7280";
-  const accentGreen = "#22c55e";
-  const lineColor = isDark ? "rgba(34,197,94,0.25)" : "rgba(34,197,94,0.35)";
+  const accent = "#22c55e";
+  const lineColor = isDark ? "rgba(34,197,94,0.2)" : "rgba(34,197,94,0.3)";
 
   return (
     <section
       id="education"
-      className="py-28 px-4 sm:px-6 lg:px-8 min-h-screen flex flex-col justify-center"
+      className="py-28 px-4 sm:px-6 lg:px-8"
       style={{ background: bg }}
     >
-      <div className="max-w-4xl mx-auto w-full">
-
-        {/* Heading */}
-        <div className="mb-16 text-center">
-          <p className="text-sm font-semibold uppercase tracking-widest mb-3" style={{ color: accentGreen }}>
-            Academic Background
-          </p>
+      <div className="max-w-4xl mx-auto">
+        <motion.div
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
           <h2
-            className="text-4xl sm:text-6xl font-bold"
+            className="text-4xl sm:text-5xl font-bold"
             style={{ color: textPrimary }}
           >
-            EDUCATION
+            Education
           </h2>
-        </div>
+        </motion.div>
 
-        {/* Timeline */}
         <div className="relative">
           {/* Vertical line */}
           <div
-            className="absolute left-4 sm:left-5 top-0 bottom-0 w-0.5"
-            style={{ background: lineColor }}
+            className="absolute top-0 bottom-0 w-px"
+            style={{ left: 20, background: lineColor }}
           />
 
           <div className="space-y-8">
             {education.map((edu, i) => (
-              <div key={i} className="relative flex gap-8 sm:gap-12 pl-14 sm:pl-16">
-
-                {/* Green dot — exactly like the attached image */}
+              <motion.div
+                key={i}
+                className="relative flex gap-10 pl-14"
+                initial={{ opacity: 0, x: -24 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.45, delay: i * 0.12 }}
+              >
+                {/* Timeline dot */}
                 <div
-                  className="absolute left-0 top-6 w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center flex-shrink-0 z-10 border-2"
-                  style={{
-                    background: isDark ? "#0a0a0a" : "#f5f5f5",
-                    borderColor: accentGreen,
-                  }}
+                  className="absolute left-0 top-6 z-10"
+                  style={{ width: 40, height: 40 }}
                 >
-                  <div
-                    className="w-3 h-3 rounded-full"
-                    style={{ background: accentGreen }}
-                  />
+                  {edu.current ? (
+                    /* Pulsing ring for current study */
+                    <div className="relative flex items-center justify-center w-full h-full">
+                      {/* Outer pulse rings */}
+                      <motion.div
+                        className="absolute"
+                        style={{
+                          width: 40,
+                          height: 40,
+                          border: `1.5px solid ${accent}`,
+                          borderRadius: 0,
+                          opacity: 0.5,
+                        }}
+                        animate={{
+                          scale: [1, 1.55, 1],
+                          opacity: [0.5, 0, 0.5],
+                        }}
+                        transition={{
+                          duration: 2,
+                          repeat: Infinity,
+                          ease: "easeOut",
+                        }}
+                      />
+                      <motion.div
+                        className="absolute"
+                        style={{
+                          width: 40,
+                          height: 40,
+                          border: `1.5px solid ${accent}`,
+                          borderRadius: 0,
+                          opacity: 0.3,
+                        }}
+                        animate={{ scale: [1, 1.9, 1], opacity: [0.3, 0, 0.3] }}
+                        transition={{
+                          duration: 2,
+                          repeat: Infinity,
+                          ease: "easeOut",
+                          delay: 0.4,
+                        }}
+                      />
+                      {/* Inner square dot */}
+                      <div
+                        style={{
+                          width: 16,
+                          height: 16,
+                          background: accent,
+                          borderRadius: 0,
+                        }}
+                      />
+                    </div>
+                  ) : (
+                    /* Static square dot for completed */
+                    <div className="flex items-center justify-center w-full h-full">
+                      <div
+                        style={{
+                          width: 14,
+                          height: 14,
+                          background: isDark
+                            ? "rgba(34,197,94,0.4)"
+                            : "rgba(34,197,94,0.5)",
+                          borderRadius: 0,
+                          border: `1.5px solid ${accent}`,
+                        }}
+                      />
+                    </div>
+                  )}
                 </div>
 
-                {/* Card — white card like the attached image */}
+                {/* Card — square corners */}
                 <div
-                  className="flex-1 p-6 sm:p-8 rounded-2xl border transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg"
+                  className="flex-1 p-7 border transition-all duration-300 hover:-translate-y-0.5"
                   style={{
                     background: cardBg,
-                    borderColor: cardBorder,
-                    boxShadow: isDark
-                      ? "0 4px 24px rgba(0,0,0,0.4)"
-                      : "0 4px 24px rgba(0,0,0,0.06)",
+                    borderColor: edu.current
+                      ? "rgba(34,197,94,0.3)"
+                      : cardBorder,
+                    borderRadius: 0,
+                    borderLeftWidth: 3,
+                    borderLeftStyle: "solid",
+                    borderLeftColor: edu.current ? accent : "transparent",
                   }}
                 >
-                  {/* Period — green, like the attached image */}
                   <p
-                    className="text-sm font-semibold mb-2"
-                    style={{ color: accentGreen }}
+                    className="text-xs font-semibold mb-2 font-mono"
+                    style={{ color: accent }}
                   >
                     {edu.period}
                   </p>
-
-                  {/* Degree — bold, large */}
                   <h3
-                    className="text-xl sm:text-2xl font-bold mb-1 leading-snug"
+                    className="text-xl font-bold mb-1 leading-snug"
                     style={{ color: textPrimary }}
                   >
                     {edu.degree}
                   </h3>
-
-                  {/* Institution */}
                   <p
                     className="text-sm font-medium mb-3"
-                    style={{ color: isDark ? "#a5b4fc" : "#4f46e5" }}
+                    style={{ color: isDark ? "#86efac" : "#16a34a" }}
                   >
                     {edu.institution}
                   </p>
-
-                  {/* Description */}
                   <p
                     className="text-sm leading-relaxed mb-4"
                     style={{ color: textMuted }}
                   >
                     {edu.description}
                   </p>
-
-                  {/* Grade badge */}
                   <span
-                    className="inline-block px-3 py-1 rounded-full text-xs font-semibold"
+                    className="inline-block px-3 py-1 text-xs font-semibold border"
                     style={{
-                      background: isDark ? "rgba(34,197,94,0.12)" : "rgba(34,197,94,0.1)",
-                      color: accentGreen,
-                      border: `1px solid ${isDark ? "rgba(34,197,94,0.25)" : "rgba(34,197,94,0.3)"}`,
+                      borderRadius: 0,
+                      background: isDark
+                        ? "rgba(34,197,94,0.1)"
+                        : "rgba(34,197,94,0.08)",
+                      color: accent,
+                      borderColor: isDark
+                        ? "rgba(34,197,94,0.25)"
+                        : "rgba(34,197,94,0.3)",
                     }}
                   >
                     {edu.grade}
                   </span>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>

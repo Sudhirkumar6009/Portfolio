@@ -1,5 +1,5 @@
 import { useInView, useMotionValue, useSpring } from "motion/react";
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef, type CSSProperties } from "react";
 
 interface CountUpProps {
   to: number;
@@ -13,6 +13,7 @@ interface CountUpProps {
   suffix?: string;
   onStart?: () => void;
   onEnd?: () => void;
+  style?: CSSProperties;
 }
 
 export default function CountUp({
@@ -27,6 +28,7 @@ export default function CountUp({
   suffix = "",
   onStart,
   onEnd,
+  style,
 }: CountUpProps) {
   const ref = useRef<HTMLSpanElement>(null);
   const motionValue = useMotionValue(direction === "down" ? to : from);
@@ -65,14 +67,14 @@ export default function CountUp({
       };
 
       const formattedNumber = Intl.NumberFormat("en-US", options).format(
-        latest
+        latest,
       );
 
       return separator
         ? formattedNumber.replace(/,/g, separator) + suffix
         : formattedNumber + suffix;
     },
-    [maxDecimals, separator, suffix]
+    [maxDecimals, separator, suffix],
   );
 
   useEffect(() => {
@@ -91,11 +93,14 @@ export default function CountUp({
         motionValue.set(direction === "down" ? from : to);
       }, delay * 1000);
 
-      const durationTimeoutId = setTimeout(() => {
-        if (typeof onEnd === "function") {
-          onEnd();
-        }
-      }, delay * 1000 + duration * 1000);
+      const durationTimeoutId = setTimeout(
+        () => {
+          if (typeof onEnd === "function") {
+            onEnd();
+          }
+        },
+        delay * 1000 + duration * 1000,
+      );
 
       return () => {
         clearTimeout(timeoutId);
@@ -125,5 +130,5 @@ export default function CountUp({
     return () => unsubscribe();
   }, [springValue, formatValue]);
 
-  return <span className={className} ref={ref} />;
+  return <span className={className} ref={ref} style={style} />;
 }

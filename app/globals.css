@@ -44,6 +44,11 @@
 
 body {
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  cursor: none;
+}
+
+*, *::before, *::after {
+  cursor: none !important;
 }
 
 /* Smooth scrolling */

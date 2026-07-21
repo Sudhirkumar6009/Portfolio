@@ -1,47 +1,148 @@
 "use client";
 
 import { useTheme } from "../context/ThemeContext";
+import { motion } from "framer-motion";
 
-const techCategories = [
+const techs = [
+  // Languages
   {
-    title: "Programming Languages",
-    items: ["JavaScript", "TypeScript", "Python", "Java", "SQL"],
+    name: "JavaScript",
+    category: "Languages",
+    img: "/assets/javaScrpit.png",
   },
   {
-    title: "Development",
-    items: [
-      "React.js", "Next.js", "React Native", "Tailwind CSS", "Vite",
-      "Node.js", "Express.js", "FastAPI", "REST API Design", "JWT",
-    ],
+    name: "TypeScript",
+    category: "Languages",
+    img: "/assets/tech/typescript.png",
+  },
+  { name: "Python", category: "Languages", img: "/assets/tech/python.png" },
+  { name: "Java", category: "Languages", img: "/assets/tech/java.png" },
+  { name: "SQL", category: "Languages", img: "/assets/tech/sql.png" },
+
+  // Development
+  { name: "React.js", category: "Development", img: "/assets/tech/react.png" },
+  { name: "Next.js", category: "Development", img: "/assets/tech/nextjs.png" },
+  { name: "Node.js", category: "Development", img: "/assets/tech/nodejs.png" },
+  { name: "FastAPI", category: "Development", img: "/assets/tech/fastapi.png" },
+  {
+    name: "Express.js",
+    category: "Development",
+    img: "/assets/tech/express.png",
   },
   {
-    title: "AI & Agents",
-    items: [
-      "Multi-agent Systems", "LLM Integration", "Deep Learning",
-      "Computer Vision", "Gemini API", "Prompt Engineering",
-      "Hugging Face", "Google AI",
-    ],
+    name: "Tailwind CSS",
+    category: "Development",
+    img: "/assets/tech/tailwind.png",
   },
   {
-    title: "Databases & Storage",
-    items: ["MongoDB", "PostgreSQL", "MySQL", "Firebase", "Redis"],
+    name: "React Native",
+    category: "Development",
+    img: "/assets/tech/reactnative.png",
+  },
+  { name: "Vite", category: "Development", img: "/assets/tech/vite.png" },
+  {
+    name: "REST API",
+    category: "Development",
+    img: "/assets/tech/restapi.png",
+  },
+  { name: "JWT", category: "Development", img: "/assets/tech/jwt.png" },
+
+  // AI & Agents
+  {
+    name: "Multi-agent",
+    category: "AI & Agents",
+    img: "/assets/tech/multiagent.png",
   },
   {
-    title: "Blockchain & Web3",
-    items: [
-      "Web3.js", "IPFS", "Web3Auth", "Solidity",
-      "dApp Development", "Filebase", "CRUST Network",
-    ],
+    name: "LLM Integration",
+    category: "AI & Agents",
+    img: "/assets/tech/llm.png",
   },
   {
-    title: "Tools & Technologies",
-    items: [
-      "Git", "GitHub", "Postman", "MongoDB Atlas", "Google OAuth",
-      "Google Colab", "Docker", "CI/CD (GitHub Actions)",
-      "Vercel", "Render", "Agile/Scrum", "Unit Testing",
-    ],
+    name: "Deep Learning",
+    category: "AI & Agents",
+    img: "/assets/tech/deeplearning.png",
+  },
+  {
+    name: "Computer Vision",
+    category: "AI & Agents",
+    img: "/assets/tech/computervision.png",
+  },
+  {
+    name: "Gemini API",
+    category: "AI & Agents",
+    img: "/assets/tech/gemini.png",
+  },
+  {
+    name: "Prompt Eng.",
+    category: "AI & Agents",
+    img: "/assets/tech/prompt.png",
+  },
+  {
+    name: "Hugging Face",
+    category: "AI & Agents",
+    img: "/assets/tech/huggingface.png",
+  },
+
+  // Databases
+  { name: "MongoDB", category: "Databases", img: "/assets/tech/mongodb.png" },
+  {
+    name: "PostgreSQL",
+    category: "Databases",
+    img: "/assets/tech/postgresql.png",
+  },
+  { name: "MySQL", category: "Databases", img: "/assets/tech/mysql.png" },
+  { name: "Firebase", category: "Databases", img: "/assets/tech/firebase.png" },
+  { name: "Redis", category: "Databases", img: "/assets/tech/redis.png" },
+
+  // Blockchain
+  { name: "Web3.js", category: "Blockchain", img: "/assets/tech/web3js.png" },
+  { name: "IPFS", category: "Blockchain", img: "/assets/tech/ipfs.png" },
+  {
+    name: "Web3Auth",
+    category: "Blockchain",
+    img: "/assets/tech/web3auth.png",
+  },
+  {
+    name: "Solidity",
+    category: "Blockchain",
+    img: "/assets/tech/solidity.png",
+  },
+
+  // Tools
+  { name: "Git", category: "Tools", img: "/assets/tech/git.png" },
+  { name: "Docker", category: "Tools", img: "/assets/tech/docker.png" },
+  {
+    name: "GitHub Actions",
+    category: "Tools",
+    img: "/assets/tech/githubactions.png",
+  },
+  { name: "Postman", category: "Tools", img: "/assets/tech/postman.png" },
+  { name: "Vercel", category: "Tools", img: "/assets/tech/vercel.png" },
+  {
+    name: "Google OAuth",
+    category: "Tools",
+    img: "/assets/tech/googleoauth.png",
   },
 ];
+
+const categories = [
+  "Languages",
+  "Development",
+  "AI & Agents",
+  "Databases",
+  "Blockchain",
+  "Tools",
+];
+
+const categoryColors: Record<string, string> = {
+  Languages: "#60a5fa",
+  Development: "#34d399",
+  "AI & Agents": "#a78bfa",
+  Databases: "#fb923c",
+  Blockchain: "#f472b6",
+  Tools: "#facc15",
+};
 
 export function TechStackSection() {
   const { theme } = useTheme();
@@ -51,9 +152,9 @@ export function TechStackSection() {
   const textPrimary = isDark ? "#ffffff" : "#0a0a0a";
   const textMuted = isDark ? "#9ca3af" : "#6b7280";
   const divider = isDark ? "rgba(255,255,255,0.07)" : "rgba(0,0,0,0.07)";
-  const pillBg = isDark ? "rgba(255,255,255,0.05)" : "rgba(0,0,0,0.04)";
-  const pillBorder = isDark ? "rgba(255,255,255,0.1)" : "rgba(0,0,0,0.1)";
-  const pillText = isDark ? "#d1d5db" : "#374151";
+  const boxBg = isDark ? "rgba(255,255,255,0.04)" : "rgba(0,0,0,0.03)";
+  const boxBorder = isDark ? "rgba(255,255,255,0.09)" : "rgba(0,0,0,0.09)";
+  const imgBg = isDark ? "rgba(255,255,255,0.06)" : "rgba(0,0,0,0.05)";
 
   return (
     <section
@@ -61,58 +162,134 @@ export function TechStackSection() {
       className="py-28 px-4 sm:px-6 lg:px-8"
       style={{ background: bg }}
     >
-      <div className="max-w-5xl mx-auto">
-
-        {/* Heading */}
-        <div className="text-center mb-16">
+      <div className="max-w-7xl mx-auto">
+        <motion.div
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
           <h2
             className="text-4xl sm:text-5xl font-bold"
             style={{ color: textPrimary }}
           >
             Technical Skills
           </h2>
-        </div>
+        </motion.div>
 
-        {/* Category rows */}
-        <div>
-          {techCategories.map((cat, i) => (
-            <div key={i}>
-              {/* Row */}
-              <div className="py-8 flex flex-col sm:flex-row sm:items-start gap-4 sm:gap-10">
-
-                {/* Category label — fixed width left column */}
-                <div className="sm:w-52 flex-shrink-0">
-                  <h3
-                    className="text-base font-semibold leading-snug"
-                    style={{ color: textPrimary }}
-                  >
-                    {cat.title}
-                  </h3>
-                </div>
-
-                {/* Pills */}
-                <div className="flex flex-wrap gap-2 flex-1">
-                  {cat.items.map((item, j) => (
-                    <span
-                      key={j}
-                      className="px-3.5 py-1.5 rounded-full text-sm font-medium border transition-all duration-200 hover:scale-105 cursor-default"
-                      style={{
-                        background: pillBg,
-                        borderColor: pillBorder,
-                        color: pillText,
-                      }}
-                    >
-                      {item}
-                    </span>
-                  ))}
-                </div>
+        <div className="flex flex-col gap-10">
+          {categories.map((cat, ci) => (
+            <motion.div
+              key={cat}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: ci * 0.06 }}
+            >
+              {/* Category label */}
+              <div className="flex items-center gap-2 mb-4">
+                <div
+                  style={{
+                    width: 8,
+                    height: 8,
+                    background: categoryColors[cat],
+                    borderRadius: 0,
+                    flexShrink: 0,
+                  }}
+                />
+                <span
+                  className="text-xs font-semibold uppercase tracking-widest"
+                  style={{ color: textMuted }}
+                >
+                  {cat}
+                </span>
               </div>
 
-              {/* Divider — not after last item */}
-              {i < techCategories.length - 1 && (
-                <div className="w-full h-px" style={{ background: divider }} />
+              {/* Square tech boxes — full width flex wrap */}
+              <div className="flex flex-wrap gap-3">
+                {techs
+                  .filter((t) => t.category === cat)
+                  .map((tech, ti) => {
+                    const catColor = categoryColors[cat];
+                    return (
+                      <motion.div
+                        key={tech.name}
+                        initial={{ opacity: 0, scale: 0.85 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: ci * 0.03 + ti * 0.025 }}
+                        whileHover={{
+                          y: -4,
+                          boxShadow: `0 8px 24px ${catColor}25`,
+                        }}
+                        className="flex flex-col items-center justify-center gap-2 border transition-colors duration-150"
+                        style={{
+                          borderRadius: 0,
+                          width: 88,
+                          height: 88,
+                          background: boxBg,
+                          borderColor: boxBorder,
+                          flexShrink: 0,
+                        }}
+                      >
+                        {/* Image area — blank square, user drops image here */}
+                        <div
+                          style={{
+                            width: 40,
+                            height: 40,
+                            background: imgBg,
+                            borderRadius: 0,
+                            overflow: "hidden",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            flexShrink: 0,
+                          }}
+                        >
+                          <img
+                            src={tech.img}
+                            alt={tech.name}
+                            style={{
+                              width: "100%",
+                              height: "100%",
+                              objectFit: "contain",
+                            }}
+                            onError={(e) => {
+                              // Show blank placeholder on missing image
+                              (e.target as HTMLImageElement).style.display =
+                                "none";
+                            }}
+                          />
+                        </div>
+
+                        {/* Name */}
+                        <span
+                          className="text-center leading-tight px-1"
+                          style={{
+                            fontSize: "0.6rem",
+                            color: textMuted,
+                            maxWidth: 80,
+                            overflow: "hidden",
+                            textOverflow: "ellipsis",
+                            whiteSpace: "nowrap",
+                            display: "block",
+                          }}
+                        >
+                          {tech.name}
+                        </span>
+                      </motion.div>
+                    );
+                  })}
+              </div>
+
+              {ci < categories.length - 1 && (
+                <div
+                  className="mt-8 w-full h-px"
+                  style={{ background: divider }}
+                />
               )}
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

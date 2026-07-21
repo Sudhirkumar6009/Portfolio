@@ -10,20 +10,25 @@ import { AchievementsSection } from "./components/AchievementsSection";
 import { ExperienceSection } from "./components/ExperienceSection";
 import { ContactSection } from "./components/ContactSection";
 import { Footer } from "./components/Footer";
+import { CustomCursor } from "./components/CustomCursor";
+import ClickSpark from "./components/ClickSpark";
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
-      <Header />
-      <HeroSection />
-      <AboutSection />
-      <EducationSection />
-      <TechStackSection />
-      <ProjectsSection />
-      <AchievementsSection />
-      <ExperienceSection />
-      <ContactSection />
-      <Footer />
-    </main>
+    <ClickSpark sparkColor="#22c55e" sparkSize={8} sparkRadius={22} sparkCount={8} duration={450}>
+      <main className="min-h-screen">
+        <CustomCursor />
+        <Header />
+        <HeroSection />
+        <AboutSection />
+        <AchievementsSection />
+        <TechStackSection />
+        <ProjectsSection />
+        <EducationSection />
+        <ExperienceSection />
+        <ContactSection />
+        <Footer />
+      </main>
+    </ClickSpark>
   );
 }

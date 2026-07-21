@@ -21,7 +21,7 @@ const experiences = [
     type: "OFFLINE",
     description:
       "Worked on PHP-based web applications — backend development, database management, and client-side integrations. Gained hands-on experience shipping real client projects.",
-    skills: ["PHP", "MySQL", "HTML/CSS", "JavaScript"],
+    skills: ["PHP", "HTML/CSS", "JavaScript"],
     current: false,
   },
 ];

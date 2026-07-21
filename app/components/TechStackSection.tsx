@@ -8,121 +8,177 @@ const techs = [
   {
     name: "JavaScript",
     category: "Languages",
-    img: "/assets/javaScrpit.png",
+    img: "/assets/logo_images/javaScript.png",
   },
   {
     name: "TypeScript",
     category: "Languages",
-    img: "/assets/tech/typescript.png",
+    img: "/assets/logo_images/typescript.png",
   },
-  { name: "Python", category: "Languages", img: "/assets/tech/python.png" },
-  { name: "Java", category: "Languages", img: "/assets/tech/java.png" },
-  { name: "SQL", category: "Languages", img: "/assets/tech/sql.png" },
+  {
+    name: "Python",
+    category: "Languages",
+    img: "/assets/logo_images/python.png",
+  },
+  {
+    name: "Java",
+    category: "Languages",
+    img: "/assets/logo_images/java.png",
+  },
+  {
+    name: "SQL",
+    category: "Languages",
+    img: "/assets/logo_images/mysql.png",
+  },
 
   // Development
-  { name: "React.js", category: "Development", img: "/assets/tech/react.png" },
-  { name: "Next.js", category: "Development", img: "/assets/tech/nextjs.png" },
-  { name: "Node.js", category: "Development", img: "/assets/tech/nodejs.png" },
-  { name: "FastAPI", category: "Development", img: "/assets/tech/fastapi.png" },
+  {
+    name: "React.js",
+    category: "Development",
+    img: "/assets/logo_images/react.png",
+  },
+  {
+    name: "Next.js",
+    category: "Development",
+    img: "/assets/logo_images/nextjs.png",
+  },
+  {
+    name: "Node.js",
+    category: "Development",
+    img: "/assets/logo_images/nodejs.png",
+  },
+  {
+    name: "FastAPI",
+    category: "Development",
+    img: "/assets/logo_images/fastapi.png",
+  },
   {
     name: "Express.js",
     category: "Development",
-    img: "/assets/tech/express.png",
+    img: "/assets/logo_images/express.png",
   },
   {
     name: "Tailwind CSS",
     category: "Development",
-    img: "/assets/tech/tailwind.png",
+    img: "/assets/logo_images/tailwind.png",
   },
   {
     name: "React Native",
     category: "Development",
-    img: "/assets/tech/reactnative.png",
+    img: "/assets/logo_images/reactnative.png",
   },
-  { name: "Vite", category: "Development", img: "/assets/tech/vite.png" },
+  {
+    name: "Vite",
+    category: "Development",
+    img: "/assets/logo_images/vite.png",
+  },
   {
     name: "REST API",
     category: "Development",
-    img: "/assets/tech/restapi.png",
+    img: "/assets/logo_images/restapi.png",
   },
-  { name: "JWT", category: "Development", img: "/assets/tech/jwt.png" },
+  { name: "JWT", category: "Development", img: "/assets/logo_images/jwt.png" },
 
   // AI & Agents
   {
     name: "Multi-agent",
     category: "AI & Agents",
-    img: "/assets/tech/multiagent.png",
+    img: "/assets/logo_images/multiagent.png",
   },
   {
     name: "LLM Integration",
     category: "AI & Agents",
-    img: "/assets/tech/llm.png",
+    img: "/assets/logo_images/llm.png",
   },
   {
     name: "Deep Learning",
     category: "AI & Agents",
-    img: "/assets/tech/deeplearning.png",
+    img: "/assets/logo_images/deeplearning.png",
   },
   {
     name: "Computer Vision",
     category: "AI & Agents",
-    img: "/assets/tech/computervision.png",
+    img: "/assets/logo_images/computervision.png",
   },
   {
     name: "Gemini API",
     category: "AI & Agents",
-    img: "/assets/tech/gemini.png",
+    img: "/assets/logo_images/gemini.png",
   },
   {
     name: "Prompt Eng.",
     category: "AI & Agents",
-    img: "/assets/tech/prompt.png",
+    img: "/assets/logo_images/prompt.png",
   },
   {
     name: "Hugging Face",
     category: "AI & Agents",
-    img: "/assets/tech/huggingface.png",
+    img: "/assets/logo_images/huggingface.png",
   },
 
   // Databases
-  { name: "MongoDB", category: "Databases", img: "/assets/tech/mongodb.png" },
+  {
+    name: "MongoDB",
+    category: "Databases",
+    img: "/assets/logo_images/mongodb.png",
+  },
   {
     name: "PostgreSQL",
     category: "Databases",
-    img: "/assets/tech/postgresql.png",
+    img: "/assets/logo_images/postgresql.png",
   },
-  { name: "MySQL", category: "Databases", img: "/assets/tech/mysql.png" },
-  { name: "Firebase", category: "Databases", img: "/assets/tech/firebase.png" },
-  { name: "Redis", category: "Databases", img: "/assets/tech/redis.png" },
+  {
+    name: "MySQL",
+    category: "Databases",
+    img: "/assets/logo_images/mysql.png",
+  },
+  {
+    name: "Firebase",
+    category: "Databases",
+    img: "/assets/logo_images/firebase.png",
+  },
+  {
+    name: "Redis",
+    category: "Databases",
+    img: "/assets/logo_images/redis.png",
+  },
 
   // Blockchain
-  { name: "Web3.js", category: "Blockchain", img: "/assets/tech/web3js.png" },
-  { name: "IPFS", category: "Blockchain", img: "/assets/tech/ipfs.png" },
+  {
+    name: "Web3.js",
+    category: "Blockchain",
+    img: "/assets/logo_images/web3js.png",
+  },
+  { name: "IPFS", category: "Blockchain", img: "/assets/logo_images/ipfs.png" },
   {
     name: "Web3Auth",
     category: "Blockchain",
-    img: "/assets/tech/web3auth.png",
+    img: "/assets/logo_images/web3auth.png",
   },
   {
     name: "Solidity",
     category: "Blockchain",
-    img: "/assets/tech/solidity.png",
+    img: "/assets/logo_images/solidity.png",
   },
 
   // Tools
-  { name: "Git", category: "Tools", img: "/assets/tech/git.png" },
-  { name: "Docker", category: "Tools", img: "/assets/tech/docker.png" },
+  { name: "Git", category: "Tools", img: "/assets/logo_images/git.png" },
+  { name: "Docker", category: "Tools", img: "/assets/logo_images/docker.png" },
   {
     name: "GitHub Actions",
     category: "Tools",
-    img: "/assets/tech/githubactions.png",
+    img: "/assets/logo_images/githubactions.png",
   },
-  { name: "Postman", category: "Tools", img: "/assets/tech/postman.png" },
-  { name: "Vercel", category: "Tools", img: "/assets/tech/vercel.png" },
+  {
+    name: "Postman",
+    category: "Tools",
+    img: "/assets/logo_images/postman.png",
+  },
+  { name: "Vercel", category: "Tools", img: "/assets/logo_images/vercel.png" },
   {
     name: "Google OAuth",
     category: "Tools",
-    img: "/assets/tech/googleoauth.png",
+    img: "/assets/logo_images/googleoauth.png",
   },
 ];
 
@@ -238,7 +294,6 @@ export function TechStackSection() {
                           style={{
                             width: 40,
                             height: 40,
-                            background: imgBg,
                             borderRadius: 0,
                             overflow: "hidden",
                             display: "flex",

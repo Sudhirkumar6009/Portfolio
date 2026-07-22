@@ -54,7 +54,7 @@ export function HeroSection() {
         <div className="overflow-hidden mb-6 sm:mb-7">
           <motion.h1
             ref={undefined}
-            className="font-bold leading-none tracking-tight text-center"
+            className="font-bold leading-none tracking-tight text-center whitespace-nowrap"
             style={{
               fontSize: "clamp(2.9rem, 9vw, 6.5rem)",
               color: textPrimary,
@@ -68,9 +68,9 @@ export function HeroSection() {
               delay: 0.25,
             }}
           >
-            <span className="block sm:inline">Sudhirkumar</span>
-            <span className="block sm:inline"> </span>
-            <span className="block sm:inline">Kuchara</span>
+            <span>Sudhirkumar</span>
+            <br className="sm:hidden" />
+            <span>Kuchara</span>
           </motion.h1>
         </div>
 

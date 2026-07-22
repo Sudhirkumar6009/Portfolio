@@ -33,6 +33,11 @@ const techs = [
 
   // Development
   {
+    name: "CSS",
+    category: "Development",
+    img: "/assets/logo_images/css3.png",
+  },
+  {
     name: "React.js",
     category: "Development",
     img: "/assets/logo_images/react.png",
@@ -65,50 +70,20 @@ const techs = [
   {
     name: "React Native",
     category: "Development",
-    img: "/assets/logo_images/reactnative.png",
+    img: "/assets/logo_images/react_native.png",
   },
   {
     name: "Vite",
     category: "Development",
     img: "/assets/logo_images/vite.png",
   },
-  {
-    name: "REST API",
-    category: "Development",
-    img: "/assets/logo_images/restapi.png",
-  },
   { name: "JWT", category: "Development", img: "/assets/logo_images/jwt.png" },
 
   // AI & Agents
   {
-    name: "Multi-agent",
-    category: "AI & Agents",
-    img: "/assets/logo_images/multiagent.png",
-  },
-  {
-    name: "LLM Integration",
-    category: "AI & Agents",
-    img: "/assets/logo_images/llm.png",
-  },
-  {
-    name: "Deep Learning",
-    category: "AI & Agents",
-    img: "/assets/logo_images/deeplearning.png",
-  },
-  {
-    name: "Computer Vision",
-    category: "AI & Agents",
-    img: "/assets/logo_images/computervision.png",
-  },
-  {
     name: "Gemini API",
     category: "AI & Agents",
     img: "/assets/logo_images/gemini.png",
-  },
-  {
-    name: "Prompt Eng.",
-    category: "AI & Agents",
-    img: "/assets/logo_images/prompt.png",
   },
   {
     name: "Hugging Face",
@@ -147,7 +122,7 @@ const techs = [
   {
     name: "Web3.js",
     category: "Blockchain",
-    img: "/assets/logo_images/web3js.png",
+    img: "/assets/logo_images/web3.png",
   },
   { name: "IPFS", category: "Blockchain", img: "/assets/logo_images/ipfs.png" },
   {
@@ -156,13 +131,14 @@ const techs = [
     img: "/assets/logo_images/web3auth.png",
   },
   {
-    name: "Solidity",
+    name: "MetaMask",
     category: "Blockchain",
-    img: "/assets/logo_images/solidity.png",
+    img: "/assets/logo_images/metamask.png",
   },
 
   // Tools
   { name: "Git", category: "Tools", img: "/assets/logo_images/git.png" },
+  { name: "GitHub", category: "Tools", img: "/assets/logo_images/github.png" },
   { name: "Docker", category: "Tools", img: "/assets/logo_images/docker.png" },
   {
     name: "GitHub Actions",
@@ -175,6 +151,7 @@ const techs = [
     img: "/assets/logo_images/postman.png",
   },
   { name: "Vercel", category: "Tools", img: "/assets/logo_images/vercel.png" },
+  { name: "Render", category: "Tools", img: "/assets/logo_images/render.png" },
   {
     name: "Google OAuth",
     category: "Tools",

@@ -180,6 +180,11 @@ export function Header() {
     transition-all duration-200 hover:scale-110 active:scale-95
     focus:outline-none
   `;
+  const btnBase2 = `
+    relative group p-2.5 rounded-full
+    focus:outline-none
+    hover:bg-green-700
+  `;
 
   const btnIdle = isDark
     ? "text-gray-400 hover:text-white hover:bg-white/10"
@@ -193,9 +198,9 @@ export function Header() {
       {/* ════════════════════════════════════════
           DESKTOP PILL NAVBAR
       ════════════════════════════════════════ */}
-      <header className="fixed top-3 left-1/2 -translate-x-1/2 z-50 hidden md:block">
+      <header className="fixed top-2 left-1/2 -translate-x-1/2 z-50 hidden md:block">
         <nav
-          className="flex items-center gap-0.5 px-3 py-2 rounded-full border"
+          className="flex items-center gap-1 px-2 py-1 rounded-full border"
           style={{
             background: pillBg,
             borderColor: pillBdr,
@@ -215,7 +220,7 @@ export function Header() {
             title="Home"
           >
             <span
-              className="flex items-center justify-center w-7 h-7 rounded-full text-sm font-bold text-white transition-all duration-200"
+              className="flex items-center justify-center w-12 h-12 rounded-full text-sm font-bold text-white transition-all duration-200"
               style={{
                 background:
                   activeSection === "home"
@@ -251,7 +256,7 @@ export function Header() {
                     : {}
                 }
               >
-                <item.icon className="w-[17px] h-[17px]" />
+                <item.icon className="w-[20px] h-[20px]" />
                 <Tip label={item.label} isDark={isDark} />
               </button>
             ),
@@ -265,9 +270,9 @@ export function Header() {
             <button
               key={i}
               onClick={() => handleClick(item)}
-              className={`${btnBase} ${btnIdle}`}
+              className={`${btnBase2} ${btnIdle}`}
             >
-              <item.icon className="w-[17px] h-[17px]" />
+              <item.icon className="w-[20px] h-[20px]" />
               <Tip label={item.label} isDark={isDark} />
             </button>
           ))}
@@ -277,8 +282,8 @@ export function Header() {
             <button
               key={i}
               onClick={() => handleClick(item)}
-              className={`${btnBase} group`}
-              style={{ color: isDark ? "#86efac" : GREEN }}
+              className={`${btnBase2}  group mr-2`}
+              style={{ color: "#ffffff" }}
             >
               <item.icon className="w-[17px] h-[17px]" />
               {/* Elegant download tooltip */}
@@ -296,7 +301,7 @@ export function Header() {
                     ? "linear-gradient(135deg,rgba(22,163,74,0.25),rgba(21,128,61,0.2))"
                     : "linear-gradient(135deg,rgba(22,163,74,0.15),rgba(21,128,61,0.1))",
                   border: `1px solid ${isDark ? "rgba(22,163,74,0.4)" : "rgba(22,163,74,0.35)"}`,
-                  color: isDark ? "#86efac" : GREEN,
+                  color: isDark ? "#ffffff" : GREEN,
                   boxShadow: "0 4px 16px rgba(22,163,74,0.2)",
                   backdropFilter: "blur(8px)",
                 }}

@@ -71,7 +71,7 @@ const NAV: NavItem[] = [
   {
     kind: "download",
     icon: Download,
-    href: "/resume.pdf",
+    href: "https://drive.google.com/file/d/18szwLfDodvxe-7Q4Epp32uxr0lrgtC8b/view?usp=sharing",
     label: "Download Resume",
   },
 ];
@@ -161,12 +161,7 @@ export function Header() {
     } else if (item.kind === "external") {
       window.open(item.href, "_blank", "noopener,noreferrer");
     } else if (item.kind === "download") {
-      const a = document.createElement("a");
-      a.href = item.href;
-      a.download =
-        "https://drive.google.com/file/d/18szwLfDodvxe-7Q4Epp32uxr0lrgtC8b/view?usp=sharing";
-      document.body.appendChild(a);
-      a.click();
+      window.open(item.href, "_blank", "noopener,noreferrer");
     }
   };
 

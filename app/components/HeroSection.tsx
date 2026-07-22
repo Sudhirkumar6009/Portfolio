@@ -68,7 +68,7 @@ export function HeroSection() {
               delay: 0.25,
             }}
           >
-            <span>Sudhirkumar</span>
+            <span>Sudhirkumar </span>
             <br className="sm:hidden" />
             <span>Kuchara</span>
           </motion.h1>

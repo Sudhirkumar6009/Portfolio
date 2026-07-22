@@ -56,10 +56,9 @@ export function HeroSection() {
             ref={undefined}
             className="font-bold leading-none tracking-tight text-center"
             style={{
-              fontSize: "clamp(2.6rem, 9vw, 6.5rem)",
+              fontSize: "clamp(2.9rem, 9vw, 6.5rem)",
               color: textPrimary,
               letterSpacing: "-0.025em",
-              whiteSpace: "nowrap",
             }}
             initial={{ y: "110%", opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
@@ -69,7 +68,9 @@ export function HeroSection() {
               delay: 0.25,
             }}
           >
-            Sudhirkumar Kuchara
+            <span className="block sm:inline">Sudhirkumar</span>
+            <span className="block sm:inline"> </span>
+            <span className="block sm:inline">Kuchara</span>
           </motion.h1>
         </div>
 

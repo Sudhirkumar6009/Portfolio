@@ -4,7 +4,6 @@ import { useTheme } from "../context/ThemeContext";
 import { motion } from "framer-motion";
 
 const techs = [
-  // Languages
   {
     name: "JavaScript",
     category: "Languages",
